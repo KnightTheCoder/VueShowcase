@@ -1,7 +1,7 @@
 <script setup>
 import Notification from '@/components/Notification.vue'
 import { useUsersStore } from '@/stores/users'
-import { computed, watch } from 'vue'
+import { computed, watch, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTitle } from './composables/title'
 import router from '@/router'
@@ -33,6 +33,12 @@ watch(
             })
     }
 )
+
+const notification = reactive({
+    open: true,
+    title: 'Title',
+    description: 'Description'
+})
 </script>
 
 <template>
@@ -60,12 +66,12 @@ watch(
 
         <RouterView />
 
-        <Notification>
+        <Notification :open="notification.open" @close="notification.open = false">
             <template #title>
-                Title
+                {{ notification.title }}
             </template>
 
-            Description
+            {{ notification.description }}
         </Notification>
     </div>
 </template>

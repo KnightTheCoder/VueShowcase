@@ -1,16 +1,20 @@
 <script setup>
-import { ref } from 'vue'
+const props = defineProps({
+    open: {
+        type: Boolean,
+        required: true
+    }
+})
 
-const open = ref(true)
+const emit = defineEmits(['close'])
 </script>
 
 <template>
     <Teleport to="body">
         <div v-if="open" class="modal">
-            <div>
+            <div @click="emit('close')">
                 <h3>
                     <slot name="title" />
-                    <button @click="open = false">X</button>
                 </h3>
                 <p>
                     <slot />
@@ -38,15 +42,7 @@ const open = ref(true)
     box-shadow: 4px 6px 5px 4px #303030;
 }
 
-div button {
-    display: inline-block;
-    margin-left: 75%;
-    background-color: red;
-    border-radius: 4px;
-}
-
-div button:hover {
-    background-color: #fa0;
-    outline: 1px solid #f70;
+.modal > div:hover {
+    cursor: pointer;
 }
 </style>

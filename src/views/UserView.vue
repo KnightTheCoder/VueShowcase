@@ -1,6 +1,6 @@
 <script setup>
 import UserList from '@/components/UserList.vue'
-import { computed, watchEffect } from 'vue'
+import { computed } from 'vue'
 import { useUsersStore } from '@/stores/users'
 import { useRoute } from 'vue-router'
 
