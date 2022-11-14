@@ -1,9 +1,9 @@
 <script setup>
-import Notification from '@/components/Notification.vue';
+import Notification from '@/components/Notification.vue'
 import { useUsersStore } from '@/stores/users'
-import { computed, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import { useTitle } from './composables/title';
+import { computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { useTitle } from './composables/title'
 import router from '@/router'
 
 const route = useRoute()

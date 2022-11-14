@@ -1,8 +1,8 @@
 <script setup>
-import UserList from '@/components/UserList.vue';
-import BaseInput from '@/components/BaseInput.vue';
+import UserList from '@/components/UserList.vue'
+import BaseInput from '@/components/BaseInput.vue'
 import { useUser } from '@/composables/user'
-import { useUsersStore } from '@/stores/users';
+import { useUsersStore } from '@/stores/users'
 import router from '@/router'
 
 const userComposable = useUser()

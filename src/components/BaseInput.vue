@@ -1,15 +1,13 @@
 <script setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 
-const emit = defineEmits([
-    'update:modelValue'
-])
+const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
     modelValue: {
         type: [String],
-        required: true
-    }
+        required: true,
+    },
 })
 
 const value = computed({
@@ -18,7 +16,7 @@ const value = computed({
     },
     set(value) {
         emit('update:modelValue', value)
-    }
+    },
 })
 </script>
 
@@ -31,6 +29,6 @@ const value = computed({
         <input
             v-bind="$attrs"
             v-model="value"
-        >
+        />
     </div>
 </template>
