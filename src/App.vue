@@ -37,7 +37,8 @@ watch(
 const notification = reactive({
     open: true,
     title: 'Title',
-    description: 'Description'
+    description: 'Description',
+    type: 'info'
 })
 </script>
 
@@ -55,7 +56,9 @@ const notification = reactive({
             </div>
             
             <div v-if="currentUser != null" class="userProfile">
-                Welcome {{ currentUser?.username }}
+                <span style="margin-right: 10px">
+                    Welcome <RouterLink :to="{ name: 'Users', params: { id: currentUser.id }}">{{ currentUser?.username }}</RouterLink>
+                </span>
 
                 <button @click="usersStore.logout">
                     Logout
@@ -66,13 +69,10 @@ const notification = reactive({
 
         <RouterView />
 
-        <Notification :open="notification.open" @close="notification.open = false">
-            <template #title>
-                {{ notification.title }}
-            </template>
-
-            {{ notification.description }}
-        </Notification>
+        <Notification
+            :notification="notification"
+            @close="notification.open = false"
+        />
     </div>
 </template>
 
