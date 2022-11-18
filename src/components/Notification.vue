@@ -12,10 +12,16 @@ const emit = defineEmits(['close'])
 
 const notificationColor = computed(() => {
     let textColor = '#f1f1f1'
-    let backgroundColor = '#242424'
-    let hoverColor = '#404040'
+    let backgroundColor = '#0077f0'
+    let hoverColor = '#0000ff'
 
     switch (props.notification.type) {
+        case 'success':
+            textColor = '#101010'
+            backgroundColor = '#00f000'
+            hoverColor = '#00ff00'
+            break
+
         case 'warning':
             textColor = '#a30000'
             backgroundColor = '#f0f000'
