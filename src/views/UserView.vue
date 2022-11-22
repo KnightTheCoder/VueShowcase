@@ -27,7 +27,9 @@ const userDoesntExist = computed(() => route.params.id != '')
         <p>Password: {{ user.password }}</p>
     </div>
 
-    <p v-else-if="userDoesntExist">User doesn't exist</p>
+    <p v-else-if="userDoesntExist">
+        User doesn't exist
+    </p>
 
     <UserList v-else />
 </template>

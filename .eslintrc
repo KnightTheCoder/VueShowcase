@@ -11,6 +11,6 @@
     "rules": {
         "quotes": ["error", "single"],
         "semi": ["error", "never"],
-        "vue/html-indent": ["error", 4]
+        "vue/html-indent": ["warn", 4]
     }
 }
