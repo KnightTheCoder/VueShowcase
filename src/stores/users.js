@@ -1,5 +1,5 @@
-import { reactive } from "vue"
-import { defineStore } from "pinia"
+import { reactive } from 'vue'
+import { defineStore } from 'pinia'
 
 export const useUsersStore = defineStore('user', () => {
     let id = 0
