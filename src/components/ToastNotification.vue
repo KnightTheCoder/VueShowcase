@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from '@vue/reactivity';
+import { computed } from 'vue'
 
 const props = defineProps({
     notification: {
@@ -44,7 +44,10 @@ const notificationColor = computed(() => {
 
 <template>
     <Teleport to="body">
-        <div v-if="notification.open" class="modal">
+        <div
+            v-if="notification.open"
+            class="modal"
+        >
             <div @click="emit('close')">
                 <h3>
                     {{ notification.title }}

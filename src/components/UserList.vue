@@ -27,7 +27,9 @@ function gotoUser(id) {
         </ul>
     </div>
 
-    <p v-else>No Users found</p>
+    <p v-else>
+        No Users found
+    </p>
 </template>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <script setup>
-import Notification from '@/components/Notification.vue'
+import ToastNotification from '@/components/ToastNotification.vue'
 import { useUsersStore } from '@/stores/users'
 import { computed, watch, reactive } from 'vue'
 import { useRoute } from 'vue-router'
@@ -46,16 +46,27 @@ const notification = reactive({
     <div class="app">
         <nav>
             <div>
-                <RouterLink to="/">Home</RouterLink> |
-                <RouterLink to="/users">Users</RouterLink>
+                <RouterLink to="/">
+                    Home
+                </RouterLink> |
+                <RouterLink to="/users">
+                    Users
+                </RouterLink>
                 <template v-if="currentUser == null">
                     |
-                    <RouterLink to="/register">Register</RouterLink> |
-                    <RouterLink to="/login">Login</RouterLink>
+                    <RouterLink to="/register">
+                        Register
+                    </RouterLink> |
+                    <RouterLink to="/login">
+                        Login
+                    </RouterLink>
                 </template>
             </div>
             
-            <div v-if="currentUser != null" class="userProfile">
+            <div
+                v-if="currentUser != null"
+                class="userProfile"
+            >
                 <span style="margin-right: 10px">
                     Welcome <RouterLink :to="{ name: 'Users', params: { id: currentUser.id }}">{{ currentUser?.username }}</RouterLink>
                 </span>
@@ -69,7 +80,7 @@ const notification = reactive({
 
         <RouterView />
 
-        <Notification
+        <ToastNotification
             :notification="notification"
             @close="notification.open = false"
         />

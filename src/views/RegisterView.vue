@@ -29,22 +29,22 @@ const register = () => {
 
     <form @submit.prevent="register">
         <BaseInput
-            type="text"
             v-model="userComposable.username.value"
+            type="text"
         >
             Username:
         </BaseInput>
 
         <BaseInput
-            type="text"
             v-model="userComposable.password.value"
+            type="text"
         >
             Password:
         </BaseInput>
 
         <BaseInput
-            type="text"
             v-model="userComposable.confirmPassword.value"
+            type="text"
         >
             Confirm password:
         </BaseInput>

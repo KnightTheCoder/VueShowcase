@@ -29,6 +29,6 @@ const value = computed({
         <input
             v-bind="$attrs"
             v-model="value"
-        />
+        >
     </div>
 </template>

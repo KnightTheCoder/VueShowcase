@@ -28,15 +28,15 @@ const login = () => {
 
     <form @submit.prevent="login">
         <BaseInput
-            type="text"
             v-model="userComposable.username.value"
+            type="text"
         >
             Username:
         </BaseInput>
 
         <BaseInput
-            type="text"
             v-model="userComposable.password.value"
+            type="text"
         >
             Password:
         </BaseInput>
