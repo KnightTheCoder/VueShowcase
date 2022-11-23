@@ -37,14 +37,14 @@ const register = () => {
 
         <BaseInput
             v-model="userComposable.password.value"
-            type="text"
+            type="password"
         >
             Password:
         </BaseInput>
 
         <BaseInput
             v-model="userComposable.confirmPassword.value"
-            type="text"
+            type="password"
         >
             Confirm password:
         </BaseInput>

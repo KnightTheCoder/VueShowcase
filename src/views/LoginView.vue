@@ -36,7 +36,7 @@ const login = () => {
 
         <BaseInput
             v-model="userComposable.password.value"
-            type="text"
+            type="password"
         >
             Password:
         </BaseInput>
