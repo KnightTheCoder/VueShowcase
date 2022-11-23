@@ -1,14 +1,16 @@
 <script setup>
 import ToastNotification from '@/components/ToastNotification.vue'
 import { useUsersStore } from '@/stores/users'
-import { computed, watch, reactive } from 'vue'
+import { computed, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useTitle } from './composables/title'
+import { useTitle } from '@/composables/title'
+import { useNotification } from '@/composables/notification'
 import router from '@/router'
 
 const route = useRoute()
 const title = useTitle()
 const usersStore = useUsersStore()
+const { notification, setNotification } = useNotification()
 
 const currentUser = computed(() => {
     const foundUsers = usersStore.users.filter(u => u.id == usersStore.loggedIn.userId)
@@ -34,11 +36,27 @@ watch(
     }
 )
 
-const notification = reactive({
-    open: true,
-    title: 'Title',
-    description: 'Description',
-    type: 'info'
+onMounted(() => {
+    setNotification(
+        'All set',
+        'Notification has been set'
+    )
+
+    setTimeout(() => {
+        setNotification(
+            'New stuff',
+            'Something has changed',
+            'warning'
+        )
+
+        setTimeout(() => {
+            setNotification(
+                'Oops! more change',
+                'The final change has happened',
+                'danger'
+            )
+        }, 2000)
+    }, 2000)
 })
 </script>
 
