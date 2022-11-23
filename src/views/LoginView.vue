@@ -2,25 +2,41 @@
 import UserList from '@/components/UserList.vue'
 import BaseInput from '@/components/BaseInput.vue'
 import { useUser } from '@/composables/user'
+import { useNotification } from '@/composables/notification'
 import { useUsersStore } from '@/stores/users'
 import router from '@/router'
+import ToastNotification from '@/components/ToastNotification.vue'
 
 const { username, password, resetUser } = useUser()
+const { notification, setNotification, closeNotification } = useNotification()
 const usersStore = useUsersStore()
+
 const login = () => {
-    console.log(username.value)
     const userId = usersStore.login(
         username.value,
         password.value
     )
 
-    console.log(userId)
     if (userId > -1) {
         resetUser()
-        router.push({
-            name: 'Users',
-            params: { id: userId }
-        })
+        setNotification(
+            'Successfull login',
+            'You successfully logged in',
+            'success'
+        )
+
+        setTimeout(() => {
+            router.push({
+                name: 'Users',
+                params: { id: userId }
+            })
+        }, 300)
+    } else {
+        setNotification(
+            'Failed to log in',
+            'Username or password is incorrect',
+            'danger'
+        )
     }
 }
 </script>
@@ -50,5 +66,10 @@ const login = () => {
         <hr>
 
         <UserList />
+
+        <ToastNotification
+            :notification="notification"
+            @close="closeNotification"
+        />
     </form>
 </template>

@@ -1,16 +1,13 @@
 <script setup>
-import ToastNotification from '@/components/ToastNotification.vue'
 import { useUsersStore } from '@/stores/users'
-import { computed, watch, onMounted } from 'vue'
+import { computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTitle } from '@/composables/title'
-import { useNotification } from '@/composables/notification'
 import router from '@/router'
 
 const route = useRoute()
 const title = useTitle()
 const usersStore = useUsersStore()
-const { notification, setNotification } = useNotification()
 
 const currentUser = computed(() => {
     const foundUsers = usersStore.users.filter(u => u.id == usersStore.loggedIn.userId)
@@ -35,13 +32,6 @@ watch(
             })
     }
 )
-
-onMounted(() => {
-    setNotification(
-        'All set',
-        'Notification has been set'
-    )
-})
 </script>
 
 <template>
@@ -79,13 +69,7 @@ onMounted(() => {
             </div>
         </nav>
 
-
         <RouterView />
-
-        <ToastNotification
-            :notification="notification"
-            @close="notification.open = false"
-        />
     </div>
 </template>
 

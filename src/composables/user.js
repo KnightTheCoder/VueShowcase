@@ -6,14 +6,14 @@ export function useUser() {
     const confirmPassword = ref('')
 
     const doPasswordsMatch = computed(() => {
-        return password.value != ''
-            && password.value == confirmPassword.value
+        return password.value == confirmPassword.value
     })
     
     const isUserCorrect = computed(() => {
         return username.value != ''
+            && password.value != ''
             && password.value.length >= 6
-            && doPasswordsMatch
+            && doPasswordsMatch.value
     })
 
     const resetUser = () => {

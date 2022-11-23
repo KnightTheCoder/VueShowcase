@@ -1,10 +1,13 @@
 <script setup>
 import BaseInput from '@/components/BaseInput.vue'
+import ToastNotification from '@/components/ToastNotification.vue'
 import { useUser } from '@/composables/user'
+import { useNotification } from '@/composables/notification'
 import { useUsersStore } from '@/stores/users'
 import router from '@/router'
 
-const { isUserCorrect, username, password, confirmPassword, resetUser } = useUser()
+const { isUserCorrect, doPasswordsMatch, username, password, confirmPassword, resetUser } = useUser()
+const { notification, setNotification, closeNotification } = useNotification()
 const usersStore = useUsersStore()
 
 const register = () => {
@@ -15,9 +18,29 @@ const register = () => {
         )
         resetUser()
 
-        router.push({
-            name: 'Login'
-        })
+        setNotification(
+            'User registered',
+            'User has successfully been registered',
+            'success'
+        )
+        setTimeout(() => {
+            router.push({
+                name: 'Login'
+            })
+        }, 300)
+
+    } else if (doPasswordsMatch) {
+        setNotification(
+            'Failed to register',
+            'Fields are empty',
+            'danger'
+        )
+    } else {
+        setNotification(
+            'Failed to register',
+            'Passwords don\'t match',
+            'danger'
+        )
     }
 }
 </script>
@@ -50,5 +73,10 @@ const register = () => {
         <button>
             Register
         </button>
+
+        <ToastNotification
+            :notification="notification"
+            @close="closeNotification"
+        />
     </form>
 </template>

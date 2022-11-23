@@ -15,6 +15,10 @@ export function useNotification() {
         notification.type = type
     }
 
+    function closeNotification() {
+        notification.open = false
+    }
+
     function resetNotification() {
         setNotification(
             'Title',
@@ -25,6 +29,7 @@ export function useNotification() {
     return {
         notification,
         setNotification,
+        closeNotification,
         resetNotification
     }
 }
