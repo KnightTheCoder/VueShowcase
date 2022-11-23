@@ -5,16 +5,18 @@ import { useUser } from '@/composables/user'
 import { useUsersStore } from '@/stores/users'
 import router from '@/router'
 
-const userComposable = useUser()
+const { username, password, resetUser } = useUser()
 const usersStore = useUsersStore()
 const login = () => {
+    console.log(username.value)
     const userId = usersStore.login(
-        userComposable.username.value,
-        userComposable.password.value
+        username.value,
+        password.value
     )
-    
+
+    console.log(userId)
     if (userId > -1) {
-        userComposable.resetUser()
+        resetUser()
         router.push({
             name: 'Users',
             params: { id: userId }
@@ -28,14 +30,14 @@ const login = () => {
 
     <form @submit.prevent="login">
         <BaseInput
-            v-model="userComposable.username.value"
+            v-model="username"
             type="text"
         >
             Username:
         </BaseInput>
 
         <BaseInput
-            v-model="userComposable.password.value"
+            v-model="password"
             type="password"
         >
             Password:

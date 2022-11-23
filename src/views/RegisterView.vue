@@ -4,18 +4,16 @@ import { useUser } from '@/composables/user'
 import { useUsersStore } from '@/stores/users'
 import router from '@/router'
 
-const userComposable = useUser()
+const { isUserCorrect, username, password, confirmPassword, resetUser } = useUser()
 const usersStore = useUsersStore()
 
 const register = () => {
-    if (userComposable.doPasswordsMatch.value
-        && userComposable.isUserCorrect.value
-    ) {
+    if (isUserCorrect.value) {
         usersStore.registerUser(
-            userComposable.username.value,
-            userComposable.password.value
+            username.value,
+            password.value
         )
-        userComposable.resetUser()
+        resetUser()
 
         router.push({
             name: 'Login'
@@ -29,21 +27,21 @@ const register = () => {
 
     <form @submit.prevent="register">
         <BaseInput
-            v-model="userComposable.username.value"
+            v-model="username"
             type="text"
         >
             Username:
         </BaseInput>
 
         <BaseInput
-            v-model="userComposable.password.value"
+            v-model="password"
             type="password"
         >
             Password:
         </BaseInput>
 
         <BaseInput
-            v-model="userComposable.confirmPassword.value"
+            v-model="confirmPassword"
             type="password"
         >
             Confirm password:

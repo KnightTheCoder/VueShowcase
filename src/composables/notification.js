@@ -3,8 +3,8 @@ import { reactive } from 'vue'
 export function useNotification() {
     let notification = reactive({
         open: false,
-        title: 'Welcome',
-        description: 'Welcome to the site',
+        title: 'Title',
+        description: 'Description',
         type: 'info'
     })
 
@@ -16,10 +16,10 @@ export function useNotification() {
     }
 
     function resetNotification() {
-        notification.open = true
-        notification.title = 'Title'
-        notification.description = 'Description'
-        notification.type = 'info'
+        setNotification(
+            'Title',
+            'Description'
+        )
     }
 
     return {

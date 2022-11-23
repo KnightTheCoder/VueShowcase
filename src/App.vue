@@ -41,22 +41,6 @@ onMounted(() => {
         'All set',
         'Notification has been set'
     )
-
-    setTimeout(() => {
-        setNotification(
-            'New stuff',
-            'Something has changed',
-            'warning'
-        )
-
-        setTimeout(() => {
-            setNotification(
-                'Oops! more change',
-                'The final change has happened',
-                'danger'
-            )
-        }, 2000)
-    }, 2000)
 })
 </script>
 
