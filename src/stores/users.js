@@ -2,7 +2,7 @@ import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useUsersStore = defineStore('user', () => {
-    let id = 0
+    let id = 1
     const users = reactive([])
     const loggedIn = reactive({
         isLoggedIn: false,
