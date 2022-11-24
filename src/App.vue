@@ -3,10 +3,16 @@ import { useUsersStore } from '@/stores/users'
 import { computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTitle } from '@/composables/title'
+import { useLocalStorage } from '@/composables/localStorage'
+import { useDarkMode } from '@/composables/darkMode'
 import router from '@/router'
 
 const route = useRoute()
 const title = useTitle()
+
+const darkModeStore = useLocalStorage('dark-mode')
+const isDark = useDarkMode(darkModeStore.data.value)
+
 const usersStore = useUsersStore()
 
 const currentUser = computed(() => {
@@ -32,12 +38,22 @@ watch(
             })
     }
 )
+
+function switchDark() {
+    isDark.value = !isDark.value
+}
 </script>
 
 <template>
     <div class="app h-screen bg-white text-black dark:bg-gray-800 dark:text-white">
         <nav>
             <div class="text-center p-3 bg-gray-300 dark:bg-gray-700">
+                <button
+                    class="p-2 m-2 border border-slate-900 bg-slate-100 hover:bg-slate-200 dark:bg-gray-700 dark:hover:bg-gray-600"
+                    @click="switchDark"
+                >
+                    Switch color mode
+                </button>
                 <RouterLink to="/">
                     Home
                 </RouterLink>

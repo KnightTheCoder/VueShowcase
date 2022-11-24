@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 
 export function useLocalStorage(storeName = '') {
-    const value = computed({
+    const data = computed({
         get: () => localStorage.getItem(storeName),
         set: (value) => localStorage.setItem(storeName, value)
     })
@@ -11,7 +11,7 @@ export function useLocalStorage(storeName = '') {
     }
 
     return {
-        value,
+        data,
         deleteValue
     }
 }
