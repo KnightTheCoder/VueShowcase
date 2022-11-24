@@ -10,9 +10,6 @@ import router from '@/router'
 const route = useRoute()
 const title = useTitle()
 
-const darkModeStore = useLocalStorage('dark-mode')
-const isDark = useDarkMode(darkModeStore.data.value)
-
 const usersStore = useUsersStore()
 
 const currentUser = computed(() => {
@@ -39,7 +36,10 @@ watch(
     }
 )
 
-function switchDark() {
+const darkModeStore = useLocalStorage('dark-mode')
+const isDark = useDarkMode(darkModeStore.data.value)
+
+function toggleDark() {
     isDark.value = !isDark.value
 }
 </script>
@@ -49,11 +49,10 @@ function switchDark() {
         <nav>
             <div class="text-center p-3 bg-gray-300 dark:bg-gray-700">
                 <button
-                    class="p-2 m-2 border border-slate-900 bg-slate-100 hover:bg-slate-200 dark:bg-gray-700 dark:hover:bg-gray-600"
-                    @click="switchDark"
-                >
-                    Switch color mode
-                </button>
+                    class="flex flex-row items-center align-middle p-3 w-6 rounded border border-slate-900 bg-slate-100 hover:bg-slate-200 dark:bg-gray-900 dark:hover:bg-gray-800"
+                    @click="toggleDark"
+                />
+
                 <RouterLink to="/">
                     Home
                 </RouterLink>
@@ -87,7 +86,7 @@ function switchDark() {
                 </span>
 
                 <button
-                    class="inline-block p-1 mt-1 mr-1 bg-gray-400 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-500"
+                    class="inline-block p-1 mt-1 mr-1 rounded bg-gray-400 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-500"
                     @click="usersStore.logout"
                 >
                     Logout
