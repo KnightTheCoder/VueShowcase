@@ -22,13 +22,14 @@ const value = computed({
 
 <template>
     <div>
-        <label>
+        <label class="text-black dark:text-white">
             <slot />
         </label>
 
         <input
             v-bind="$attrs"
             v-model="value"
+            class="inline-block p-2 m-2 rounded bg-gray-300 text-black focus:bg-gray-100 dark:bg-gray-700 dark:text-white dark:focus:bg-gray-500"
         >
     </div>
 </template>

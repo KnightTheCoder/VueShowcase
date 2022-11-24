@@ -19,7 +19,7 @@ const userDoesntExist = computed(() => route.params.id != '')
 </script>
 
 <template>
-    <div class="user">
+    <div class="user text-center">
         <div v-if="userExists">
             <h1 class="text-center">
                 Welcome {{ user.username }}!

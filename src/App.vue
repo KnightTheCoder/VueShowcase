@@ -37,10 +37,11 @@ watch(
 <template>
     <div class="app h-screen bg-white text-black dark:bg-gray-800 dark:text-white">
         <nav>
-            <div class="text-center bg-gray-700 p-2">
+            <div class="text-center p-3 bg-gray-300 dark:bg-gray-700">
                 <RouterLink to="/">
                     Home
-                </RouterLink> |
+                </RouterLink>
+                |
                 <RouterLink to="/users">
                     Users
                 </RouterLink>
@@ -48,7 +49,8 @@ watch(
                     |
                     <RouterLink to="/register">
                         Register
-                    </RouterLink> |
+                    </RouterLink>
+                    |
                     <RouterLink to="/login">
                         Login
                     </RouterLink>
@@ -60,15 +62,25 @@ watch(
                 class="userProfile absolute top-1 right-1"
             >
                 <span style="margin-right: 10px">
-                    Welcome <RouterLink :to="{ name: 'Users', params: { id: currentUser.id }}">{{ currentUser?.username }}</RouterLink>
+                    Welcome
+                    <RouterLink :to="{ name: 'Users', params: { id: currentUser.id }}">
+                        <span class="text-green-700 hover:text-green-500 dark:text-teal-500 dark:hover:text-teal-300">
+                            {{ currentUser?.username }}
+                        </span>
+                    </RouterLink>
                 </span>
 
-                <button @click="usersStore.logout">
+                <button
+                    class="inline-block p-1 mt-1 mr-1 bg-gray-400 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-500"
+                    @click="usersStore.logout"
+                >
                     Logout
                 </button>
             </div>
         </nav>
 
-        <RouterView />
+        <div class="mt-2">
+            <RouterView />
+        </div>
     </div>
 </template>

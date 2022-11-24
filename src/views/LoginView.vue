@@ -34,7 +34,7 @@ const login = () => {
     } else {
         setNotification(
             'Failed to log in',
-            'Username or password is incorrect',
+            'Incorrect username or password',
             'danger'
         )
     }
@@ -68,7 +68,7 @@ const login = () => {
                 Login
             </button>
 
-            <hr class="flex-none">
+            <hr>
 
             <UserList />
 

@@ -12,7 +12,7 @@ function gotoUser(id) {
 
 <template>
     <div v-if="usersStore.users.length > 0">
-        <h3 class="text-center">
+        <h3 class="text-center mb-2">
             Users
         </h3>
 
@@ -20,7 +20,7 @@ function gotoUser(id) {
             <li
                 v-for="user in usersStore.users"
                 :key="user.id"
-                class="list-none bg-slate-500 w-fit p-3 mb-5 border-4 border-slate-900 cursor-pointer"
+                class="list-none w-fit p-3 mb-5 bg-slate-400 border-4 text-center text-white border-slate-900 cursor-pointer dark:bg-gray-600"
                 @click="gotoUser(user.id)"
             >
                 <p>Id: {{ user.id }}</p>
@@ -34,17 +34,3 @@ function gotoUser(id) {
         No Users found
     </p>
 </template>
-
-<!-- <style scoped>
-li {
-    color: whitesmoke;
-    list-style-type: none;
-    background-color: #666;
-    width: fit-content;
-    padding: 10px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    border: 4px solid black;
-    cursor: pointer;
-}
-</style> -->
