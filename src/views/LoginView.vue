@@ -1,11 +1,11 @@
 <script setup>
 import UserList from '@/components/UserList.vue'
 import BaseInput from '@/components/BaseInput.vue'
+import ToastNotification from '@/components/ToastNotification.vue'
 import { useUser } from '@/composables/user'
 import { useNotification } from '@/composables/notification'
 import { useUsersStore } from '@/stores/users'
 import router from '@/router'
-import ToastNotification from '@/components/ToastNotification.vue'
 
 const { username, password, resetUser } = useUser()
 const { notification, setNotification, closeNotification } = useNotification()
