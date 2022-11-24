@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+    @apply inline-block p-2 m-2 rounded text-white bg-gray-400;
+    @apply dark:text-white dark:bg-slate-700;
+    @apply hover:bg-slate-500;
+    @apply active:bg-slate-400;
+}

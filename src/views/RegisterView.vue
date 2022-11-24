@@ -46,37 +46,44 @@ const register = () => {
 </script>
 
 <template>
-    <h1>Register</h1>
-
-    <form @submit.prevent="register">
-        <BaseInput
-            v-model="username"
-            type="text"
-        >
-            Username:
-        </BaseInput>
-
-        <BaseInput
-            v-model="password"
-            type="password"
-        >
-            Password:
-        </BaseInput>
-
-        <BaseInput
-            v-model="confirmPassword"
-            type="password"
-        >
-            Confirm password:
-        </BaseInput>
-        
-        <button>
+    <div class="register">
+        <h1 class="text-center">
             Register
-        </button>
+        </h1>
 
-        <ToastNotification
-            :notification="notification"
-            @close="closeNotification"
-        />
-    </form>
+        <form
+            class="flex flex-col items-center"
+            @submit.prevent="register"
+        >
+            <BaseInput
+                v-model="username"
+                type="text"
+            >
+                Username:
+            </BaseInput>
+
+            <BaseInput
+                v-model="password"
+                type="password"
+            >
+                Password:
+            </BaseInput>
+
+            <BaseInput
+                v-model="confirmPassword"
+                type="password"
+            >
+                Confirm password:
+            </BaseInput>
+            
+            <button class="btn">
+                Register
+            </button>
+
+            <ToastNotification
+                :notification="notification"
+                @close="closeNotification"
+            />
+        </form>
+    </div>
 </template>

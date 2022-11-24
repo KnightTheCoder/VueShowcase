@@ -19,17 +19,20 @@ const userDoesntExist = computed(() => route.params.id != '')
 </script>
 
 <template>
-    <div v-if="userExists">
-        <h1>Welcome {{ user.username }}!</h1>
+    <div class="user">
+        <div v-if="userExists">
+            <h1 class="text-center">
+                Welcome {{ user.username }}!
+            </h1>
+            <p>Id: {{ user.id }}</p>
+            <p>Username: {{ user.username }}</p>
+            <p>Password: {{ user.password }}</p>
+        </div>
 
-        <p>Id: {{ user.id }}</p>
-        <p>Username: {{ user.username }}</p>
-        <p>Password: {{ user.password }}</p>
+        <p v-else-if="userDoesntExist">
+            User doesn't exist
+        </p>
+
+        <UserList v-else />
     </div>
-
-    <p v-else-if="userDoesntExist">
-        User doesn't exist
-    </p>
-
-    <UserList v-else />
 </template>

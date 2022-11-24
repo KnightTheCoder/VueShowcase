@@ -35,9 +35,9 @@ watch(
 </script>
 
 <template>
-    <div class="app">
+    <div class="app h-screen bg-white text-black dark:bg-gray-800 dark:text-white">
         <nav>
-            <div>
+            <div class="text-center bg-gray-700 p-2">
                 <RouterLink to="/">
                     Home
                 </RouterLink> |
@@ -57,7 +57,7 @@ watch(
             
             <div
                 v-if="currentUser != null"
-                class="userProfile"
+                class="userProfile absolute top-1 right-1"
             >
                 <span style="margin-right: 10px">
                     Welcome <RouterLink :to="{ name: 'Users', params: { id: currentUser.id }}">{{ currentUser?.username }}</RouterLink>
@@ -72,15 +72,3 @@ watch(
         <RouterView />
     </div>
 </template>
-
-<style scoped>
-.app {
-    text-align: center;
-}
-
-.userProfile {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-}
-</style>

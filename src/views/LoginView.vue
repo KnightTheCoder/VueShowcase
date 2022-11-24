@@ -42,34 +42,40 @@ const login = () => {
 </script>
 
 <template>
-    <h1>Login</h1>
-
-    <form @submit.prevent="login">
-        <BaseInput
-            v-model="username"
-            type="text"
-        >
-            Username:
-        </BaseInput>
-
-        <BaseInput
-            v-model="password"
-            type="password"
-        >
-            Password:
-        </BaseInput>
-
-        <button>
+    <div class="register">
+        <h1 class="text-center">
             Login
-        </button>
+        </h1>
 
-        <hr>
+        <form
+            class="flex flex-col items-center"
+            @submit.prevent="login"
+        >
+            <BaseInput
+                v-model="username"
+                class="flex flex-row items-center"
+                type="text"
+            >
+                Username:
+            </BaseInput>
+            <BaseInput
+                v-model="password"
+                type="password"
+            >
+                Password:
+            </BaseInput>
+            <button class="btn">
+                Login
+            </button>
 
-        <UserList />
+            <hr class="flex-none">
 
-        <ToastNotification
-            :notification="notification"
-            @close="closeNotification"
-        />
-    </form>
+            <UserList />
+
+            <ToastNotification
+                :notification="notification"
+                @close="closeNotification"
+            />
+        </form>
+    </div>
 </template>
