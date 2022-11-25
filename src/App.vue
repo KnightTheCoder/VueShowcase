@@ -36,13 +36,16 @@ watch(
     }
 )
 
-const darkModeStore = useLocalStorage('dark-mode')
-const isDark = useDarkMode(null)
+const darkModeStorage = useLocalStorage('dark-mode')
+const isDark = useDarkMode(darkModeStorage.get() == 'true')
 
 function toggleDark() {
     isDark.value = !isDark.value
-    darkModeStore
 }
+
+watch(isDark, (value) => {
+    darkModeStorage.set(value)
+})
 </script>
 
 <template>
@@ -50,7 +53,7 @@ function toggleDark() {
         <nav>
             <div class="text-center p-3 bg-gray-300 dark:bg-gray-700">
                 <button
-                    class="flex flex-row items-center align-middle p-3 w-6 rounded border border-slate-900 bg-slate-100 hover:bg-slate-200 dark:bg-gray-900 dark:hover:bg-gray-800"
+                    class="flex p-3 w-6 rounded border border-slate-900 bg-slate-100 hover:bg-slate-200 dark:bg-gray-900 dark:hover:bg-gray-800"
                     @click="toggleDark"
                 />
 
@@ -75,9 +78,9 @@ function toggleDark() {
             
             <div
                 v-if="currentUser != null"
-                class="userProfile absolute top-1 right-1"
+                class="absolute top-1 right-1"
             >
-                <span style="margin-right: 10px">
+                <span class="mr-2">
                     Welcome
                     <RouterLink :to="{ name: 'Users', params: { id: currentUser.id }}">
                         <span class="text-green-700 hover:text-green-500 dark:text-teal-500 dark:hover:text-teal-300">

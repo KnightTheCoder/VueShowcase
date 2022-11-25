@@ -1,17 +1,21 @@
-import { computed } from 'vue'
+// import { computed } from 'vue'
 
 export function useLocalStorage(storeName = '') {
-    const data = computed({
-        get: () => localStorage.getItem(storeName),
-        set: (value) => localStorage.setItem(storeName, value)
-    })
+    function get() {
+        return localStorage.getItem(storeName)
+    }
 
-    function deleteValue() {
+    function set(value) {
+        localStorage.setItem(storeName, value)
+    }
+
+    function deleteData() {
         localStorage.removeItem(storeName)
     }
 
     return {
-        data,
-        deleteValue
+        get,
+        set,
+        deleteData
     }
 }
