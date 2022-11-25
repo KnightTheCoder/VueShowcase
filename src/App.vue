@@ -37,10 +37,11 @@ watch(
 )
 
 const darkModeStore = useLocalStorage('dark-mode')
-const isDark = useDarkMode(darkModeStore.data.value)
+const isDark = useDarkMode(null)
 
 function toggleDark() {
     isDark.value = !isDark.value
+    darkModeStore
 }
 </script>
 
