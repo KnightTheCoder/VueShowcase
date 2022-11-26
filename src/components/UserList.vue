@@ -12,7 +12,7 @@ function gotoUser(id) {
 
 <template>
     <div v-if="usersStore.users.length > 0">
-        <h3 class="text-center mb-2 text-xl">
+        <h3 class="text-center mb-2 text-2xl">
             Users
         </h3>
 
@@ -20,7 +20,7 @@ function gotoUser(id) {
             <li
                 v-for="user in usersStore.users"
                 :key="user.id"
-                class="list-none w-fit p-3 mb-5 bg-slate-300 border text-center text-black dark:text-cyan-500 border-slate-900 dark:border-cyan-300 rounded-2xl cursor-pointer dark:bg-sky-800"
+                class="list-none w-fit p-6 mb-5 bg-slate-300 border text-center text-black dark:text-slate-300 border-slate-900 dark:border-cyan-200 rounded-2xl cursor-pointer dark:bg-slate-700"
                 @click="gotoUser(user.id)"
             >
                 <p>Id: {{ user.id }}</p>

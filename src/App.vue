@@ -88,7 +88,7 @@ function setImages() {
 </script>
 
 <template>
-    <div class="app h-screen bg-white text-black dark:bg-slate-600 dark:text-slate-300">
+    <div class="app">
         <nav>
             <div class="flex items-center p-2 bg-gray-300 dark:bg-slate-700">
                 <button class="w-10 h-10 m-1 mr-4 p-1 rounded-full border border-slate-900 peer bg-gray-200 dark:bg-slate-500 focus:border-2 hover:bg-gray-300 dark:hover:bg-slate-400 focus:border-sky-400 focus:bg-gray-300 dark:focus:bg-slate-400">
@@ -161,6 +161,13 @@ function setImages() {
                         Login
                     </RouterLink>
                 </template>
+                |
+                <RouterLink
+                    to="/erorr"
+                    class="hover:text-slate-500 dark:hover:text-cyan-300"
+                >
+                    Error
+                </RouterLink>
             </div>
             
             <div
@@ -186,7 +193,7 @@ function setImages() {
             </div>
         </nav>
 
-        <div class="mt-2">
+        <div class="m-4">
             <RouterView />
         </div>
     </div>

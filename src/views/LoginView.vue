@@ -43,7 +43,7 @@ const login = () => {
 
 <template>
     <div class="register">
-        <h1 class="text-center">
+        <h1 class="text-center text-3xl mb-4">
             Login
         </h1>
 
@@ -56,13 +56,13 @@ const login = () => {
                 class="flex flex-row items-center"
                 type="text"
             >
-                Username:
+                Username
             </BaseInput>
             <BaseInput
                 v-model="password"
                 type="password"
             >
-                Password:
+                Password
             </BaseInput>
             <button class="btn">
                 Login

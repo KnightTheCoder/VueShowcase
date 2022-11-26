@@ -47,7 +47,7 @@ const register = () => {
 
 <template>
     <div class="register">
-        <h1 class="text-center">
+        <h1 class="text-center text-3xl mb-4">
             Register
         </h1>
 
@@ -59,21 +59,21 @@ const register = () => {
                 v-model="username"
                 type="text"
             >
-                Username:
+                Username<span class="text-red-600">*</span>
             </BaseInput>
 
             <BaseInput
                 v-model="password"
                 type="password"
             >
-                Password:
+                Password<span class="text-red-600">*</span>
             </BaseInput>
 
             <BaseInput
                 v-model="confirmPassword"
                 type="password"
             >
-                Confirm password:
+                Confirm password<span class="text-red-600">*</span>
             </BaseInput>
             
             <button class="btn">
