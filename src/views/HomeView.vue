@@ -6,7 +6,7 @@
 
 <template>
     <div class="home">
-        <h1 class="text-center">
+        <h1 class="text-center text-3xl">
             Home
         </h1>
     </div>

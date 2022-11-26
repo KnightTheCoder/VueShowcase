@@ -63,7 +63,7 @@ onMounted(() => {
 })
 
 function createSource(mode, color) {
-    return `./src/assets/images/${mode}_mode_icon_${color}.png`
+    return `/src/assets/images/${mode}_mode_icon_${color}.png`
 }
 
 function setImages() {
@@ -88,18 +88,18 @@ function setImages() {
 </script>
 
 <template>
-    <div class="app h-screen bg-white text-black dark:bg-gray-800 dark:text-white">
+    <div class="app h-screen bg-white text-black dark:bg-slate-600 dark:text-slate-300">
         <nav>
-            <div class="flex items-center p-3 bg-gray-300 dark:bg-gray-700">
-                <button class="w-8 h-8 m-1 mr-4 rounded-full border border-slate-900 peer">
+            <div class="flex items-center p-2 bg-gray-300 dark:bg-slate-700">
+                <button class="w-10 h-10 m-1 mr-4 p-1 rounded-full border border-slate-900 peer bg-gray-200 dark:bg-slate-500 focus:border-2 hover:bg-gray-300 dark:hover:bg-slate-400 focus:border-sky-400 focus:bg-gray-300 dark:focus:bg-slate-400">
                     <img
                         :src="colorImage.current"
                     >
                 </button>
 
-                <div class="hidden absolute top-12 rounded-md bg-gray-200 dark:bg-gray-600 m-2 peer-focus:block hover:block">
+                <div class="hidden absolute top-12 rounded-md m-2 peer-focus:block hover:block">
                     <a
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer select-none rounded-md"
+                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800"
                         @click="setDark('dark')"
                     >
                         <img
@@ -110,7 +110,7 @@ function setImages() {
                     </a>
 
                     <a
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer select-none rounded-md"
+                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800"
                         @click="setDark('light')"
                     >
                         <img
@@ -121,7 +121,7 @@ function setImages() {
                     </a>
 
                     <a
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer select-none rounded-md"
+                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800"
                         @click="setDark('system')"
                     >
                         <img
@@ -132,20 +132,32 @@ function setImages() {
                     </a>
                 </div>
                 
-                <RouterLink to="/">
+                <RouterLink
+                    to="/"
+                    class="hover:text-slate-500 dark:hover:text-cyan-300"
+                >
                     Home
                 </RouterLink>
                 |
-                <RouterLink to="/users">
+                <RouterLink
+                    to="/users"
+                    class="hover:text-slate-500 dark:hover:text-cyan-300"
+                >
                     Users
                 </RouterLink>
                 <template v-if="currentUser == null">
                     |
-                    <RouterLink to="/register">
+                    <RouterLink
+                        to="/register"
+                        class="hover:text-slate-500 dark:hover:text-cyan-300"
+                    >
                         Register
                     </RouterLink>
                     |
-                    <RouterLink to="/login">
+                    <RouterLink
+                        to="/login"
+                        class="hover:text-slate-500 dark:hover:text-cyan-300"
+                    >
                         Login
                     </RouterLink>
                 </template>
@@ -157,15 +169,16 @@ function setImages() {
             >
                 <span class="mr-2">
                     Welcome
-                    <RouterLink :to="{ name: 'Users', params: { id: currentUser.id }}">
-                        <span class="text-green-700 hover:text-green-500 dark:text-teal-500 dark:hover:text-teal-300">
-                            {{ currentUser?.username }}
-                        </span>
+                    <RouterLink
+                        :to="{ name: 'Users', params: { id: currentUser.id }}"
+                        class="text-green-700 hover:text-green-500 dark:text-cyan-300 dark:hover:text-cyan-200"
+                    >
+                        {{ currentUser?.username }}
                     </RouterLink>
                 </span>
 
                 <button
-                    class="inline-block p-1 mt-1 mr-1 rounded bg-gray-400 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-500"
+                    class="inline-block p-2 mt-1 mr-1 rounded text-slate-900 dark:text-slate-300 bg-gray-200 hover:bg-gray-400 active:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-500 dark:active:bg-gray-400"
                     @click="usersStore.logout"
                 >
                     Logout

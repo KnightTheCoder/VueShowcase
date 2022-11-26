@@ -31,7 +31,7 @@ onMounted(() => {
 <template>
     <div class="user text-center">
         <div v-if="userExists">
-            <h1 class="text-center">
+            <h1 class="text-center text-3xl mb-6">
                 Welcome {{ user.username }}!
             </h1>
             <p>Id: {{ user.id }}</p>
