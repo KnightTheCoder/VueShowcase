@@ -6,7 +6,7 @@ import { useNotification } from '@/composables/notification'
 import { useUsersStore } from '@/stores/users'
 import router from '@/router'
 
-const { isUserCorrect, doPasswordsMatch, username, password, confirmPassword, resetUser } = useUser()
+const { isUserCorrect, doPasswordsMatch, username, password, email, confirmPassword, resetUser } = useUser()
 const { notification, setNotification, closeNotification } = useNotification()
 const usersStore = useUsersStore()
 
@@ -14,6 +14,7 @@ const register = () => {
     if (isUserCorrect.value) {
         usersStore.registerUser(
             username.value,
+            email.value,
             password.value
         )
         resetUser()
@@ -60,6 +61,13 @@ const register = () => {
                 type="text"
             >
                 Username<span class="text-red-600">*</span>
+            </BaseInput>
+
+            <BaseInput
+                v-model="email"
+                type="email"
+            >
+                Email<span class="text-red-600">*</span>
             </BaseInput>
 
             <BaseInput

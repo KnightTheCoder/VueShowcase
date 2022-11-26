@@ -9,10 +9,11 @@ export const useUsersStore = defineStore('user', () => {
         userId: -1
     })
 
-    const registerUser = (username, password) => {
+    const registerUser = (username, email, password) => {
         users.push({
             id: id++,
             username,
+            email,
             password
         })
     }

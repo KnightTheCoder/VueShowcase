@@ -36,6 +36,7 @@ onMounted(() => {
             </h1>
             <p>Id: {{ user.id }}</p>
             <p>Username: {{ user.username }}</p>
+            <p>Email: {{ user.email }}</p>
             <p>Password: {{ user.password }}</p>
         </div>
 
