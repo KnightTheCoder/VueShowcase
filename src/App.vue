@@ -8,7 +8,7 @@ import { useDarkMode } from '@/composables/darkMode'
 import router from '@/router'
 
 const route = useRoute()
-const title = useTitle()
+const title = useTitle('Vue Showcase')
 
 const usersStore = useUsersStore()
 

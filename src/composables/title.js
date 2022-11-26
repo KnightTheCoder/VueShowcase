@@ -1,10 +1,10 @@
 import { ref, watch } from 'vue'
 
-export function useTitle(name = '') {
-    const title = ref(name)
+export function useTitle(titleSuffix = '') {
+    const title = ref('')
 
     watch(title, (newValue) => {
-        document.title = newValue
+        document.title = `${newValue} - ${titleSuffix}`
     })
 
     return title

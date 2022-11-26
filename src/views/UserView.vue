@@ -1,10 +1,12 @@
 <script setup>
 import UserList from '@/components/UserList.vue'
-import { computed } from 'vue'
-import { useUsersStore } from '@/stores/users'
+import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useTitle } from '@/composables/title'
+import { useUsersStore } from '@/stores/users'
 
 const route = useRoute()
+const title = useTitle('Vue Showcase')
 const usersStore = useUsersStore()
 
 const user = computed(
@@ -16,6 +18,14 @@ const user = computed(
 
 const userExists = computed(() => route.params.id && user.value.id > -1)
 const userDoesntExist = computed(() => route.params.id != '')
+
+onMounted(() => {
+    if (userExists.value) {
+        title.value = user.value.username
+    } else {
+        title.value = 'Users'
+    }
+})
 </script>
 
 <template>
