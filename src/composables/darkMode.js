@@ -13,9 +13,9 @@ export function useDarkMode(value) {
     )
 
     function onChange(value) {
-        if(isDark.value == null) {
-            isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-        } else if (value) {
+        if(value == 'system' || value == 'null') {
+            isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        } else if (isDark.value == 'dark') {
             document.documentElement.classList.add('dark')
         } else {
             document.documentElement.classList.remove('dark')

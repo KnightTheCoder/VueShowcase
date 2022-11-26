@@ -37,10 +37,13 @@ watch(
 )
 
 const darkModeStorage = useLocalStorage('dark-mode')
-const isDark = useDarkMode(darkModeStorage.get() == 'true')
+const isDark = useDarkMode(darkModeStorage.get())
 
 function setDark(value) {
     isDark.value = value
+    if (value == 'system') {
+        darkModeStorage.set(null)
+    }
 }
 
 watch(isDark, (value) => {
@@ -64,17 +67,19 @@ function createSource(mode, color) {
 }
 
 function setImages() {
-    let color = isDark.value ? 'light' : 'dark'
+    let color = 'light'
     let mode = 'system'
     switch (darkModeStorage.get()) {
-        case 'true':
+        case 'dark':
             mode = 'dark'
+            color = 'light'
             break
-        case 'false':
+        case 'light':
             mode = 'light'
+            color = 'dark'
             break
     }
-
+    
     colorImage.dark = createSource('dark', color)
     colorImage.light = createSource('light', color)
     colorImage.system = createSource('system', color)
@@ -95,7 +100,7 @@ function setImages() {
                 <div class="hidden absolute top-12 rounded-md bg-gray-200 dark:bg-gray-600 m-2 peer-focus:block hover:block">
                     <a
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer select-none rounded-md"
-                        @click="setDark(true)"
+                        @click="setDark('dark')"
                     >
                         <img
                             class="h-8 w-8 overflow-hidden inline-block"
@@ -106,7 +111,7 @@ function setImages() {
 
                     <a
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer select-none rounded-md"
-                        @click="setDark(false)"
+                        @click="setDark('light')"
                     >
                         <img
                             class="h-8 w-8 overflow-hidden inline-block"
@@ -117,7 +122,7 @@ function setImages() {
 
                     <a
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer select-none rounded-md"
-                        @click="setDark(null)"
+                        @click="setDark('system')"
                     >
                         <img
                             class="h-8 w-8 overflow-hidden inline-block"
