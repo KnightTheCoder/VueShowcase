@@ -6,6 +6,7 @@ export function useLocalStorage(storeName = '') {
     }
 
     function set(value) {
+        console.log(value, typeof value)
         if (value == null) {
             localStorage.removeItem(storeName)
         }
