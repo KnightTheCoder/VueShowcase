@@ -1,6 +1,6 @@
 <script setup>
 import { useUsersStore } from '@/stores/users'
-import { computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTitle } from '@/composables/title'
 import { useLocalStorage } from '@/composables/localStorage'
@@ -38,25 +38,104 @@ watch(
 
 const darkModeStorage = useLocalStorage('dark-mode')
 const isDark = useDarkMode(darkModeStorage.get() == 'true')
+const isDarkOpen = ref(false)
 
 function toggleDark() {
-    isDark.value = !isDark.value
+    isDarkOpen.value = !isDarkOpen.value
+}
+
+function setDark(value) {
+    isDark.value = value
 }
 
 watch(isDark, (value) => {
     darkModeStorage.set(value)
 })
+
+// const colorImage = reactive({
+//     dark: {
+//         light: () => import('@/assets/images/dark_mode_icon_light'),
+//         dark: () => import('@/assets/images/dark_mode_icon_dark')
+//     },
+//     light: {
+//         light: () => import('@/assets/images/light_mode_icon_light'),
+//         dark: () => import('@/assets/images/light_mode_icon_dark')
+//     },
+//     system: {
+//         light: () => import('@/assets/images/system_mode_icon_light'),
+//         dark: () => import('@/assets/images/system_mode_icon_dark')
+//     }
+// })
 </script>
 
 <template>
     <div class="app h-screen bg-white text-black dark:bg-gray-800 dark:text-white">
         <nav>
-            <div class="text-center p-3 bg-gray-300 dark:bg-gray-700">
+            <div class="flex items-center p-3 bg-gray-300 dark:bg-gray-700">
                 <button
-                    class="flex p-3 w-6 rounded border border-slate-900 bg-slate-100 hover:bg-slate-200 dark:bg-gray-900 dark:hover:bg-gray-800"
+                    class="p-4 m-1 mr-4 w-6 rounded-full border border-slate-900"
                     @click="toggleDark"
                 />
 
+                <div
+                    v-if="isDarkOpen"
+                    class="absolute top-12 left-0 rounded-md bg-gray-200 dark:bg-gray-600 m-2"
+                >
+                    <a
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer select-none"
+                        @click="setDark(true)"
+                    >
+                        <img
+                            v-if="isDark"
+                            class="h-8 w-8 overflow-hidden inline-block"
+                            src="@/assets/images/dark_mode_icon_light.png"
+                        >
+
+                        <img
+                            v-if="!isDark"
+                            class="h-8 w-8 overflow-hidden inline-block"
+                            src="@/assets/images/dark_mode_icon_dark.png"
+                        >
+                        Dark
+                    </a>
+
+                    <a
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer select-none"
+                        @click="setDark(false)"
+                    >
+                        <img
+                            v-if="isDark"
+                            class="h-8 w-8 overflow-hidden inline-block"
+                            src="@/assets/images/light_mode_icon_light.png"
+                        >
+
+                        <img
+                            v-if="!isDark"
+                            class="h-8 w-8 overflow-hidden inline-block"
+                            src="@/assets/images/light_mode_icon_dark.png"
+                        >
+                        Light
+                    </a>
+
+                    <a
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer select-none"
+                        @click="setDark(null)"
+                    >
+                        <img
+                            v-if="isDark"
+                            class="h-8 w-8 overflow-hidden inline-block"
+                            src="@/assets/images/system_mode_icon_light.png"
+                        >
+
+                        <img
+                            v-if="!isDark"
+                            class="h-8 w-8 overflow-hidden inline-block"
+                            src="@/assets/images/system_mode_icon_dark.png"
+                        >
+                        System
+                    </a>
+                </div>
+                
                 <RouterLink to="/">
                     Home
                 </RouterLink>
@@ -78,7 +157,7 @@ watch(isDark, (value) => {
             
             <div
                 v-if="currentUser != null"
-                class="absolute top-1 right-1"
+                class="absolute top-2 right-1"
             >
                 <span class="mr-2">
                     Welcome

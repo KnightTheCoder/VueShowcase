@@ -6,16 +6,14 @@ export function useLocalStorage(storeName = '') {
     }
 
     function set(value) {
+        if (value == null) {
+            localStorage.removeItem(storeName)
+        }
         localStorage.setItem(storeName, value)
-    }
-
-    function deleteData() {
-        localStorage.removeItem(storeName)
     }
 
     return {
         get,
-        set,
-        deleteData
+        set
     }
 }
