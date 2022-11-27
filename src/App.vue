@@ -1,11 +1,18 @@
 <script setup>
 import BaseButton from '@/components/BaseButton.vue'
-import { useUsersStore } from '@/stores/users'
 import { ref, computed, watch, reactive, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useTitle } from '@/composables/title'
 import { useLocalStorage } from '@/composables/localStorage'
 import { useDarkMode } from '@/composables/darkMode'
+import { UseLocalization } from '@/composables/localization'
+import { useUsersStore } from '@/stores/users'
+
+const local = ref({})
+const localization = UseLocalization()
+localization.loadLocalization().then((data) => {
+    local.value = data
+})
 
 const route = useRoute()
 const router = useRouter()
@@ -108,6 +115,8 @@ function setImages() {
     colorImage.system = createSource('system', color)
     colorImage.current = createSource(mode, color)
 }
+
+
 </script>
 
 <template>

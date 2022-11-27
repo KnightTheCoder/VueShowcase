@@ -28,6 +28,6 @@ const usersStore = useUsersStore()
         v-else
         class="text-center"
     >
-        No Users found
+        No users found
     </p>
 </template>

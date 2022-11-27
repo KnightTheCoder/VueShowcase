@@ -1,0 +1,20 @@
+{
+    "en": {
+        "title": "Vue Showcase",
+        "dark": "dark",
+        "light": "light",
+        "system": "system",
+        "users": "Users",
+        "no_users_found": "No users found",
+        "user_doesnt_exist": "User doesn't exist"
+    },
+    "hu": {
+        "title": "Vue Bemutató",
+        "dark": "sötét",
+        "light": "világos",
+        "system": "rendszer",
+        "users": "Felhasznélók",
+        "no_users_found": "Egy felhasználó sem létezik",
+        "user_doesnt_exist": "Nem létezik a felhasználó"
+    }
+}
