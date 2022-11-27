@@ -185,28 +185,31 @@ function setImages() {
                 >
                     Users
                 </RouterLink>
-                <template v-if="currentUser == null">
-                    |
-                    <RouterLink
-                        to="/register"
-                        class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
-                    >
-                        Register
-                    </RouterLink>
-                    |
-                    <RouterLink
-                        to="/login"
-                        class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
-                    >
-                        Login
-                    </RouterLink>
-                </template>
                 |
                 <RouterLink
                     to="/erorr"
                     class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                 >
                     Error
+                </RouterLink>
+            </div>
+
+            <div
+                v-if="currentUser == null"
+                class="absolute top-4 right-3"
+            >
+                <RouterLink
+                    to="/register"
+                    class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
+                >
+                    Register
+                </RouterLink>
+                |
+                <RouterLink
+                    to="/login"
+                    class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
+                >
+                    Login
                 </RouterLink>
             </div>
             

@@ -14,7 +14,7 @@ const usersStore = useUsersStore()
             <li
                 v-for="user in usersStore.users"
                 :key="user.id"
-                class="list-none w-fit p-6 mb-5 bg-slate-300 border text-center text-black dark:text-slate-300 border-slate-900 dark:border-cyan-200 rounded-2xl dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 cursor-default select-none"
+                class="list-none w-fit p-6 mb-5 bg-slate-300 border text-center text-black dark:text-slate-300 border-slate-900 dark:border-cyan-200 rounded-2xl dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600"
             >
                 <p>Id: {{ user.id }}</p>
                 <p>Username: {{ user.username }}</p>
