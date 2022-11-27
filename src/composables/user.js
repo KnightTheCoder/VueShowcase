@@ -6,6 +6,12 @@ export function useUser() {
     const password = ref('')
     const confirmPassword = ref('')
 
+    const isEmpty = computed(() => {
+        return username.value != ''
+            && password.value != ''
+            && email.value != ''
+    })
+
     const doPasswordsMatch = computed(() => {
         return password.value == confirmPassword.value
     })
@@ -19,12 +25,9 @@ export function useUser() {
     })
     
     const isUserCorrect = computed(() => {
-        return username.value != ''
-            && password.value != ''
-            && email.value != ''
-            && isEmailFormatCorrect
-            && isPasswordFormatCorrect
-            && doPasswordsMatch.value
+        return isEmpty.value
+            && isEmailFormatCorrect.value
+            && isPasswordFormatCorrect.value
     })
 
     const resetUser = () => {
@@ -40,6 +43,7 @@ export function useUser() {
         password,
         confirmPassword,
         resetUser,
+        isEmpty,
         isPasswordFormatCorrect,
         isEmailFormatCorrect,
         doPasswordsMatch,

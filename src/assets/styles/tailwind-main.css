@@ -5,10 +5,3 @@
 body {
     @apply bg-white text-black dark:bg-slate-600 dark:text-slate-300;
 }
-
-.btn {
-    @apply inline-block p-2 m-2 rounded bg-gray-200 text-slate-900;
-    @apply dark:text-slate-300 dark:bg-slate-700;
-    @apply hover:bg-gray-300 dark:hover:bg-slate-500;
-    @apply active:bg-gray-400 dark:active:bg-slate-400;
-}

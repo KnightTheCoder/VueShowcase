@@ -1,5 +1,6 @@
 <script setup>
 import BaseInput from '@/components/BaseInput.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import ToastNotification from '@/components/ToastNotification.vue'
 import { useUser } from '@/composables/user'
 import { useNotification } from '@/composables/notification'
@@ -11,7 +12,7 @@ const { notification, setNotification, closeNotification } = useNotification()
 const usersStore = useUsersStore()
 
 const register = () => {
-    if (isUserCorrect.value) {
+    if (isUserCorrect.value && doPasswordsMatch.value) {
         usersStore.registerUser(
             username.value,
             email.value,
@@ -83,10 +84,10 @@ const register = () => {
             >
                 Confirm password<span class="text-red-600">*</span>
             </BaseInput>
-            
-            <button class="btn">
+
+            <BaseButton>
                 Register
-            </button>
+            </BaseButton>
 
             <ToastNotification
                 :notification="notification"

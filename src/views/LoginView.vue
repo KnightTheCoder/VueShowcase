@@ -1,6 +1,7 @@
 <script setup>
 import UserList from '@/components/UserList.vue'
 import BaseInput from '@/components/BaseInput.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import ToastNotification from '@/components/ToastNotification.vue'
 import { useUser } from '@/composables/user'
 import { useNotification } from '@/composables/notification'
@@ -64,9 +65,10 @@ const login = () => {
             >
                 Password
             </BaseInput>
-            <button class="btn">
+
+            <BaseButton>
                 Login
-            </button>
+            </BaseButton>
 
             <hr>
 

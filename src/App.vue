@@ -1,4 +1,5 @@
 <script setup>
+import BaseButton from './components/BaseButton.vue'
 import { useUsersStore } from '@/stores/users'
 import { ref, computed, watch, reactive, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -223,12 +224,9 @@ function setImages() {
                     </RouterLink>
                 </span>
 
-                <button
-                    class="inline-block p-2 mt-1 mr-1 rounded text-slate-900 dark:text-slate-300 bg-gray-200 hover:bg-gray-400 active:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-500 dark:active:bg-gray-400"
-                    @click="usersStore.logout"
-                >
+                <BaseButton @click="usersStore.logout">
                     Logout
-                </button>
+                </BaseButton>
             </div>
         </nav>
 

@@ -64,7 +64,7 @@ const notificationColor = computed(() => {
 .modal {
     z-index: 999;
     position: fixed;
-    top: 10%;
+    top: 14%;
     left: 50%;
     margin-left: -15vw;
 }

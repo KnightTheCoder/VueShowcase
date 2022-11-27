@@ -8,7 +8,7 @@ import InformationArticle from '@/components/InformationArticle.vue'
 
 <template>
     <div class="home">
-        <h1 class="text-center text-2xl">
+        <h1 class="text-center my-8 text-4xl">
             Vue Showcase by Kocsis Dominik Adrián
         </h1>
 
@@ -19,6 +19,10 @@ import InformationArticle from '@/components/InformationArticle.vue'
             The purpose of Vue Showcase is to showcase what you can accomplish using Vue and it's ecosystem
             through examples and a fully working website
         </InformationArticle>
+
+        <h1 class="text-3xl text-center mt-14 mb-6">
+            Services used for the making of Vue Showcase
+        </h1>
 
         <InformationArticle title="Vue">
             Vue (pronounced /vju:/, like view) is a JavaScript framework for building user interfaces.
