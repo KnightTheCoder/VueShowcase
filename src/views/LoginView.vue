@@ -54,7 +54,6 @@ const login = () => {
         >
             <BaseInput
                 v-model="username"
-                class="flex flex-row items-center"
                 type="text"
             >
                 Username

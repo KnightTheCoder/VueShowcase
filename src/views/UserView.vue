@@ -88,28 +88,34 @@ function resetUser() {
 </script>
 
 <template>
-    <div class="user text-center">
+    <div class="user">
         <div
             v-if="userExists"
             class="border border-blue-500 dark:border-sky-500 rounded-lg mt-8 p-4 w-1/2 mx-auto bg-gray-300 dark:bg-gray-700 shadow-lg shadow-blue-500 dark:shadow-sky-500"
         >
-            <h1 class="text-center text-3xl mb-6">
-                Welcome {{ user.username }}!
-            </h1>
-            <div class="my-4 p-4 text-lg">
-                <p>Id: {{ user.id }}</p>
-                <p>Username: {{ user.username }}</p>
-                <p>Email: {{ user.email }}</p>
-                <p>Password: {{ user.password }}</p>
+            <div class="text-center">
+                <h1 class="text-center text-3xl mb-6">
+                    Welcome {{ user.username }}!
+                </h1>
+                <div class="my-4 p-4 text-lg">
+                    <p>Id: {{ user.id }}</p>
+                    <p>Username: {{ user.username }}</p>
+                    <p>Email: {{ user.email }}</p>
+                    <p>Password: {{ user.password }}</p>
+                </div>
+                <BaseButton
+                    class="px-6"
+                    @click="toggleEdit"
+                >
+                    Edit
+                </BaseButton>
             </div>
 
-            <BaseButton @click="toggleEdit">
-                Edit
-            </BaseButton>
+            
 
             <div
                 v-if="isBeingEdited"
-                class="m-4"
+                class="m-4 mx-auto w-fit"
                 @keydown.enter="saveChanges"
             >
                 <BaseInput
@@ -137,7 +143,10 @@ function resetUser() {
                     Save changes
                 </BaseButton>
 
-                <BaseButton @click="resetUser">
+                <BaseButton
+                    class="ml-12 px-4"
+                    @click="resetUser"
+                >
                     Reset
                 </BaseButton>
             </div>

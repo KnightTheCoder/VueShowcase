@@ -59,30 +59,34 @@ const register = () => {
         >
             <BaseInput
                 v-model="username"
+                :required="true"
                 type="text"
             >
-                Username<span class="text-red-600">*</span>
+                Username
             </BaseInput>
 
             <BaseInput
                 v-model="email"
+                :required="true"
                 type="email"
             >
-                Email<span class="text-red-600">*</span>
+                Email
             </BaseInput>
 
             <BaseInput
                 v-model="password"
+                :required="true"
                 type="password"
             >
-                Password<span class="text-red-600">*</span>
+                Password
             </BaseInput>
 
             <BaseInput
                 v-model="confirmPassword"
+                :required="true"
                 type="password"
             >
-                Confirm password<span class="text-red-600">*</span>
+                Confirm password
             </BaseInput>
 
             <BaseButton>

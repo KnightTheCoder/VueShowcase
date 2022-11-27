@@ -5,9 +5,14 @@ const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
     modelValue: {
-        type: [String],
+        type: String,
         required: true,
     },
+    required: {
+        type: Boolean,
+        required: false,
+        default: false
+    }
 })
 
 const value = computed({
@@ -22,10 +27,16 @@ const value = computed({
 
 <template>
     <div>
-        <label>
+        <label class="ml-3 block">
             <slot />
+            <span
+                v-if="required"
+                class="text-red-600"
+            >
+                *
+            </span>
         </label>
-
+        
         <input
             v-bind="$attrs"
             v-model="value"
