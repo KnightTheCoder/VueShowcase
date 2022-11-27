@@ -111,44 +111,42 @@ function resetUser() {
                 </BaseButton>
             </div>
 
-            
+            <div v-if="isBeingEdited">
+                <hr class="mx-auto my-4 border-gray-900 dark:border-gray-300">
 
-            <div
-                v-if="isBeingEdited"
-                class="m-4 mx-auto w-fit"
-                @keydown.enter="saveChanges"
-            >
-                <BaseInput
-                    v-model="username"
-                    type="text"
+                <div
+                    class="m-4 mx-auto w-fit"
+                    @keydown.enter="saveChanges"
                 >
-                    Username
-                </BaseInput>
-
-                <BaseInput
-                    v-model="email"
-                    type="email"
-                >
-                    Email
-                </BaseInput>
-
-                <BaseInput
-                    v-model="password"
-                    type="password"
-                >
-                    Password
-                </BaseInput>
+                    <BaseInput
+                        v-model="username"
+                        type="text"
+                    >
+                        Username
+                    </BaseInput>
+                    <BaseInput
+                        v-model="email"
+                        type="email"
+                    >
+                        Email
+                    </BaseInput>
+                    <BaseInput
+                        v-model="password"
+                        type="password"
+                    >
+                        Password
+                    </BaseInput>
                 
-                <BaseButton @click="saveChanges">
-                    Save changes
-                </BaseButton>
-
-                <BaseButton
-                    class="ml-12 px-4"
-                    @click="resetUser"
-                >
-                    Reset
-                </BaseButton>
+                    <BaseButton @click="saveChanges">
+                        Save changes
+                    </BaseButton>
+                    <BaseButton
+                        class="ml-12 px-4"
+                        @click="resetUser"
+                    >
+                        Reset
+                    </BaseButton>
+                </div>
             </div>
 
             <ToastNotification
@@ -157,7 +155,10 @@ function resetUser() {
             />
         </div>
 
-        <p v-else-if="userDoesntExist">
+        <p
+            v-else-if="userDoesntExist"
+            class="text-center"
+        >
             User doesn't exist
         </p>
 

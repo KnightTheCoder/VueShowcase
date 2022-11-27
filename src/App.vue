@@ -1,5 +1,5 @@
 <script setup>
-import BaseButton from './components/BaseButton.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import { useUsersStore } from '@/stores/users'
 import { ref, computed, watch, reactive, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'

@@ -2,14 +2,18 @@
 import InformationArticle from '@/components/InformationArticle.vue'
 
 // Must import router to use it first
-// import router from '@/router'
+// import { useRouter } from 'vue-router'
+// const router = useRouter()
 // router.push('/users/1')
 </script>
 
 <template>
     <div class="home">
         <h1 class="text-center my-8 text-4xl">
-            Vue Showcase by Kocsis Dominik Adrián
+            Vue Showcase
+            <p class="mt-4 underline text-lg">
+                by Kocsis Dominik Adrián
+            </p>
         </h1>
 
         <InformationArticle
@@ -24,13 +28,13 @@ import InformationArticle from '@/components/InformationArticle.vue'
             Services used for the making of Vue Showcase
         </h1>
 
-        <InformationArticle title="Vue">
+        <InformationArticle title="Vue - Frontend Framework">
             Vue (pronounced /vju:/, like view) is a JavaScript framework for building user interfaces.
             It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces,
             be they simple or complex.
         </InformationArticle>
 
-        <InformationArticle title="Vue Router">
+        <InformationArticle title="Vue Router - Routing">
             Vue Router is the official router for Vue.js. It deeply integrates with Vue.js core to make building Single Page Applications with Vue.js a breeze. Features include: <br>
             <br>
 
@@ -48,10 +52,17 @@ import InformationArticle from '@/components/InformationArticle.vue'
             </ul>
         </InformationArticle>
 
-        <InformationArticle title="Pinia">
+        <InformationArticle title="Pinia - State Management">
             Pinia is a store library for Vue, it allows you to share a state across components/pages.
             If you are familiar with the Composition API, you might be thinking you can already share a global state with a simple export const state = reactive({}).
             This is true for single page applications but exposes your application to security vulnerabilities if it is server side rendered. But even in small single page applications
+        </InformationArticle>
+
+        <InformationArticle title="Tailwind - CSS Framework">
+            A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup. <br>
+            Utility classes help you work within the constraints of a system instead of littering your stylesheets with arbitrary values.
+            They make it easy to be consistent with color choices, spacing, typography, shadows, and everything else that makes up a well-engineered design system.
+            Learn more, utility-first fundamentals
         </InformationArticle>
     </div>
 </template>

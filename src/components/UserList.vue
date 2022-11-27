@@ -24,7 +24,10 @@ const usersStore = useUsersStore()
         </ul>
     </div>
 
-    <p v-else>
+    <p
+        v-else
+        class="text-center"
+    >
         No Users found
     </p>
 </template>
