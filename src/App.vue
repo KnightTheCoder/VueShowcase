@@ -1,6 +1,6 @@
 <script setup>
 import { useUsersStore } from '@/stores/users'
-import { computed, watch, reactive, onMounted } from 'vue'
+import { ref, computed, watch, reactive, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTitle } from '@/composables/title'
 import { useLocalStorage } from '@/composables/localStorage'
@@ -36,6 +36,7 @@ watch(
     }
 )
 
+const isOpen = ref(false)
 const darkModeStorage = useLocalStorage('dark-mode')
 const isDark = useDarkMode(darkModeStorage.get())
 
@@ -91,13 +92,25 @@ function setImages() {
     <div class="app">
         <nav>
             <div class="flex items-center p-2 bg-gray-300 dark:bg-slate-700">
-                <button class="w-10 h-10 m-1 mr-4 p-1 rounded-full border border-slate-900 peer bg-gray-200 dark:bg-slate-500 focus:border-2 hover:bg-gray-300 dark:hover:bg-slate-400 focus:border-sky-400 focus:bg-gray-300 dark:focus:bg-slate-400">
+                <button
+                    class="w-10 h-10 m-1 mr-4 p-1 rounded-full border border-slate-900 bg-gray-300 dark:bg-gray-500 focus:border-2 hover:bg-gray-300 dark:hover:bg-slate-400 focus:border-sky-400 focus:bg-gray-300 dark:focus:bg-slate-400"
+                    @click="isOpen = !isOpen"
+                >
                     <img
                         :src="colorImage.current"
                     >
                 </button>
 
-                <div class="hidden absolute top-12 rounded-md m-2 peer-focus:block hover:block">
+                <button
+                    v-if="isOpen"
+                    class="fixed top-0 right-0 bottom-0 left-0 h-full w-full cursor-default"
+                    @click="isOpen = false"
+                />
+
+                <div
+                    v-if="isOpen"
+                    class="absolute top-12 rounded-md m-2"
+                >
                     <a
                         class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800"
                         @click="setDark('dark')"
