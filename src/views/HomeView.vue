@@ -13,9 +13,14 @@ import InformationArticle from '@/components/InformationArticle.vue'
         </h1>
 
         <InformationArticle
-            title="Vue"
+            title="Purpose of Vue Showcase"
             image-source="/src/assets/images/vue_logo.png"
         >
+            The purpose of Vue Showcase is to showcase what you can accomplish using Vue and it's ecosystem
+            through examples and a fully working website
+        </InformationArticle>
+
+        <InformationArticle title="Vue">
             Vue (pronounced /vju:/, like view) is a JavaScript framework for building user interfaces.
             It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces,
             be they simple or complex.

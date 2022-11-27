@@ -1,13 +1,13 @@
 <script setup>
 import { useUsersStore } from '@/stores/users'
-import { ref, computed, watch, reactive, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, computed, watch, reactive, onMounted, onUnmounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useTitle } from '@/composables/title'
 import { useLocalStorage } from '@/composables/localStorage'
 import { useDarkMode } from '@/composables/darkMode'
-import router from '@/router'
 
 const route = useRoute()
+const router = useRouter()
 const title = useTitle('Vue Showcase')
 
 const usersStore = useUsersStore()
@@ -37,6 +37,15 @@ watch(
 )
 
 const isOpen = ref(false)
+
+function setOpen(value) {
+    if (value == 'toggle') {
+        isOpen.value = !isOpen.value
+    } else {   
+        isOpen.value = value
+    }
+}
+
 const darkModeStorage = useLocalStorage('dark-mode')
 const isDark = useDarkMode(darkModeStorage.get())
 
@@ -59,8 +68,20 @@ const colorImage = reactive({
     current: ''
 })
 
-onMounted(() => {
+function handleEscape(e) {
+    if (e.key == 'Esc' || e.key == 'Escape') {
+        isOpen.value = false
+    }
+}
+
+onMounted(() => {   
+    document.addEventListener('keydown', handleEscape)
+
     setImages()
+})
+
+onUnmounted(() => {
+    document.removeEventListener('keydown', handleEscape)
 })
 
 function createSource(mode, color) {
@@ -93,8 +114,8 @@ function setImages() {
         <nav>
             <div class="flex items-center p-2 bg-gray-300 dark:bg-slate-700">
                 <button
-                    class="w-10 h-10 m-1 mr-4 p-1 rounded-full border border-slate-900 bg-gray-300 dark:bg-gray-500 focus:border-2 hover:bg-gray-300 dark:hover:bg-slate-400 focus:border-sky-400 focus:bg-gray-300 dark:focus:bg-slate-400"
-                    @click="isOpen = !isOpen"
+                    class="relative z-10 w-10 h-10 m-1 mr-4 p-1 rounded-full border border-slate-900 bg-gray-300 dark:bg-gray-500 focus:border-2 hover:bg-gray-300 dark:hover:bg-slate-400 focus:border-sky-400 focus:bg-gray-300 dark:focus:bg-slate-400"
+                    @click="setOpen('toggle')"
                 >
                     <img
                         :src="colorImage.current"
@@ -103,16 +124,17 @@ function setImages() {
 
                 <button
                     v-if="isOpen"
-                    class="fixed top-0 right-0 bottom-0 left-0 h-full w-full cursor-default"
-                    @click="isOpen = false"
+                    class="fixed inset-0 h-full w-full cursor-default"
+                    tabindex="-1"
+                    @click="setOpen(false)"
                 />
 
                 <div
                     v-if="isOpen"
-                    class="absolute top-12 rounded-md m-2"
+                    class="absolute top-12 m-2 shadow-lg shadow-gray-700 dark:shadow-gray-800"
                 >
                     <a
-                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800"
+                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800 active:bg-gray-300 dark:active:bg-slate-400"
                         @click="setDark('dark')"
                     >
                         <img
@@ -123,7 +145,7 @@ function setImages() {
                     </a>
 
                     <a
-                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800"
+                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800 active:bg-gray-300 dark:active:bg-slate-400"
                         @click="setDark('light')"
                     >
                         <img
@@ -134,7 +156,7 @@ function setImages() {
                     </a>
 
                     <a
-                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800"
+                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800 active:bg-gray-300 dark:active:bg-slate-400"
                         @click="setDark('system')"
                     >
                         <img
@@ -147,14 +169,18 @@ function setImages() {
                 
                 <RouterLink
                     to="/"
-                    class="hover:text-slate-500 dark:hover:text-cyan-300"
+                    class="flex flex-row items-center hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                 >
-                    Home
+                    <img
+                        class="w-8 h-8"
+                        src="/src/assets/images/vue_logo.png"
+                    >
+                    Vue Showcase
                 </RouterLink>
                 |
                 <RouterLink
                     to="/users"
-                    class="hover:text-slate-500 dark:hover:text-cyan-300"
+                    class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                 >
                     Users
                 </RouterLink>
@@ -162,14 +188,14 @@ function setImages() {
                     |
                     <RouterLink
                         to="/register"
-                        class="hover:text-slate-500 dark:hover:text-cyan-300"
+                        class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                     >
                         Register
                     </RouterLink>
                     |
                     <RouterLink
                         to="/login"
-                        class="hover:text-slate-500 dark:hover:text-cyan-300"
+                        class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                     >
                         Login
                     </RouterLink>
@@ -177,7 +203,7 @@ function setImages() {
                 |
                 <RouterLink
                     to="/erorr"
-                    class="hover:text-slate-500 dark:hover:text-cyan-300"
+                    class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                 >
                     Error
                 </RouterLink>
