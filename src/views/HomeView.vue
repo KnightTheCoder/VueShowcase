@@ -27,7 +27,7 @@ const { getLocalWord } = useLocalizationStore()
         </InformationArticle>
 
         <h1 class="text-3xl text-center mt-14 mb-6">
-            Services used for the making of Vue Showcase
+            {{ getLocalWord('services_used') }}
         </h1>
 
         <InformationArticle title="Vue - Frontend Framework">
