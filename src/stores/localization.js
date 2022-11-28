@@ -6,7 +6,7 @@ import { useLocalStorage } from '@/composables/localStorage'
 export const useLocalizationStore = defineStore('localization', () => {
     const localizationStorage = useLocalStorage('language')
 
-    const defaultValue = localizationStorage.get() == 'null' ? navigator.language.slice(0, 2) : localizationStorage.get()
+    const defaultValue = localizationStorage.get() == null ? navigator.language.slice(0, 2) : localizationStorage.get()
 
     const currentLanguage = ref(defaultValue)
 
