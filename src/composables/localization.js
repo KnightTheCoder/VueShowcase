@@ -1,10 +1,16 @@
+import { ref } from 'vue'
+import localization from '@/../config/localization.json'
+
 export function UseLocalization() {
-    async function loadLocalization() {
-        const resp = await fetch('/config/localization.json')
-        return await resp.json()
+    const currentLanguage = ref(navigator.language.slice(0, 2))
+
+    function getLocalWord(name) {
+        return localization[currentLanguage.value][name]
     }
 
     return {
-        loadLocalization
+        currentLanguage,
+        localization,
+        getLocalWord
     }
 }

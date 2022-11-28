@@ -1,7 +1,7 @@
 <script setup>
 import DropDownMenu from './components/DropDownMenu.vue'
 import BaseButton from '@/components/BaseButton.vue'
-import { ref, computed, watch, reactive, onMounted } from 'vue'
+import { computed, watch, reactive, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useTitle } from '@/composables/title'
 import { useLocalStorage } from '@/composables/localStorage'
@@ -9,11 +9,7 @@ import { useDarkMode } from '@/composables/darkMode'
 import { UseLocalization } from '@/composables/localization'
 import { useUsersStore } from '@/stores/users'
 
-const local = ref({})
-const localization = UseLocalization()
-localization.loadLocalization().then((data) => {
-    local.value = data
-})
+const { currentLanguage, getLocalWord } = UseLocalization()
 
 const route = useRoute()
 const router = useRouter()
@@ -49,7 +45,6 @@ const darkModeStorage = useLocalStorage('dark-mode')
 const isDark = useDarkMode(darkModeStorage.get())
 
 function setDark(value) {
-    console.log(value)
     isDark.value = value
     if (value == 'system') {
         darkModeStorage.set(null)
@@ -102,9 +97,9 @@ const darkBtnImage = computed(() => {
 
 const darkInformation = computed(() => {
     return [
-        { text: 'Dark', image: colorImage.dark, parameter: 'dark' },
-        { text: 'Light', image: colorImage.light, parameter : 'light' },
-        { text: 'System', image: colorImage.system, parameter: 'system' },
+        { text: getLocalWord('dark'), image: colorImage.dark, parameter: 'dark' },
+        { text: getLocalWord('light'), image: colorImage.light, parameter : 'light' },
+        { text: getLocalWord('system'), image: colorImage.system, parameter: 'system' },
     ]
 })
 
@@ -115,6 +110,14 @@ const languageInformation = computed(() => {
         { text: 'ES', image: null, parameter: 'es' },
     ]
 })
+
+const selectedLanguage = computed(() => {
+    return currentLanguage.value.toUpperCase()
+})
+
+function setLanguage(value) {
+    currentLanguage.value = value
+}
 </script>
 
 <template>
@@ -128,10 +131,11 @@ const languageInformation = computed(() => {
                 />
 
                 <DropDownMenu
-                    class="left-14"
+                    class="left-16"
                     :information="languageInformation"
+                    @click="setLanguage"
                 >
-                    En
+                    {{ selectedLanguage }}
                 </DropDownMenu>
                 
                 <RouterLink
@@ -142,7 +146,7 @@ const languageInformation = computed(() => {
                         class="w-8 h-8"
                         src="/src/assets/images/vue_logo.png"
                     >
-                    Vue Showcase
+                    {{ getLocalWord('title') }}
                 </RouterLink>
                 |
                 <RouterLink
