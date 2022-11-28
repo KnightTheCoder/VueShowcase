@@ -107,6 +107,14 @@ const darkInformation = computed(() => {
         { text: 'System', image: colorImage.system, parameter: 'system' },
     ]
 })
+
+const languageInformation = computed(() => {
+    return [
+        { text: 'EN', image: null, parameter: 'en' },
+        { text: 'HU', image: null, parameter: 'hu' },
+        { text: 'ES', image: null, parameter: 'es' },
+    ]
+})
 </script>
 
 <template>
@@ -118,6 +126,13 @@ const darkInformation = computed(() => {
                     :information="darkInformation"
                     @click="setDark"
                 />
+
+                <DropDownMenu
+                    class="left-14"
+                    :information="languageInformation"
+                >
+                    En
+                </DropDownMenu>
                 
                 <RouterLink
                     to="/"

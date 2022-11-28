@@ -42,7 +42,6 @@ function onClicked(value) {
 
 <template>
     <button
-        v-bind="$attrs"
         class="relative z-10 w-10 h-10 m-1 mr-4 p-1 rounded-full border border-slate-900 bg-gray-300 dark:bg-gray-500 focus:border-2 hover:bg-gray-300 dark:hover:bg-slate-400 focus:border-sky-400 focus:bg-gray-300 dark:focus:bg-slate-400"
         @click="setOpen('toggle')"
     >
@@ -50,6 +49,8 @@ function onClicked(value) {
             v-if="buttonImage"
             :src="buttonImage"
         >
+
+        <slot />
     </button>
 
     <button
@@ -61,6 +62,7 @@ function onClicked(value) {
 
     <div
         v-if="isOpen"
+        v-bind="$attrs"
         class="absolute top-12 m-2 shadow-lg shadow-gray-700 dark:shadow-gray-800"
     >
         <DropDownItem

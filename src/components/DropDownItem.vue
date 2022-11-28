@@ -26,7 +26,7 @@ function onClicked() {
         @click="onClicked"
     >
         <img
-            if="image"
+            v-if="image"
             class="h-8 w-8 overflow-hidden inline-block"
             :src="image"
         >
