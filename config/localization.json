@@ -5,6 +5,12 @@
         "light": "Light",
         "system": "System",
         "users": "Users",
+        "error": "Error",
+        "register": "Register",
+        "login": "Login",
+        "welcome": "Welcome",
+        "logout": "Logout",
+        "purpose": "The purpose of Vue Showcase is to showcase what you can accomplish using Vue and its ecosystem",
         "no_users_found": "No users found",
         "user_doesnt_exist": "User doesn't exist"
     },
@@ -14,6 +20,12 @@
         "light": "Világos",
         "system": "Rendszer",
         "users": "Felhasználók",
+        "error": "Hiba",
+        "register": "Regisztráció",
+        "login": "Bejelentkezés",
+        "welcome": "Üdvözlet",
+        "logout": "Kijelentkezés",
+        "purpose": "A Vue Showcase lényege az, hogy bemutassa mit lehet megvalósítani a vue és az ökoszisztémája segítségével",
         "no_users_found": "Egy felhasználó sem létezik",
         "user_doesnt_exist": "Nem létezik a felhasználó"
     },
@@ -23,6 +35,12 @@
         "light": "Claro",
         "system": "Sisterna",
         "users": "Usuarios",
+        "error": "Error",
+        "register": "Register",
+        "login": "Login",
+        "welcome": "Welcome",
+        "logout": "Logout",
+        "purpose": "The purpose of Vue Showcase is to showcase what you can accomplish using Vue and its ecosystem",
         "no_users_found": "No se encontraron usuarios",
         "user_doesnt_exist": "Usuario no existe"
     }

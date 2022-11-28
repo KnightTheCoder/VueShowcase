@@ -1,15 +1,16 @@
 <script setup>
 import DropDownMenu from './components/DropDownMenu.vue'
 import BaseButton from '@/components/BaseButton.vue'
-import { computed, watch, reactive, onMounted } from 'vue'
+import { computed, watch, reactive, onMounted, toRefs } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useTitle } from '@/composables/title'
 import { useLocalStorage } from '@/composables/localStorage'
 import { useDarkMode } from '@/composables/darkMode'
-import { UseLocalization } from '@/composables/localization'
+import { useLocalizationStore } from './stores/localization'
 import { useUsersStore } from '@/stores/users'
 
-const { currentLanguage, getLocalWord } = UseLocalization()
+const { currentLanguage } = toRefs(useLocalizationStore())
+const { getLocalWord } = useLocalizationStore()
 
 const route = useRoute()
 const router = useRouter()
@@ -153,14 +154,14 @@ function setLanguage(value) {
                     to="/users"
                     class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                 >
-                    Users
+                    {{ getLocalWord('users') }}
                 </RouterLink>
                 |
                 <RouterLink
                     to="/erorr"
                     class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                 >
-                    Error
+                    {{ getLocalWord('error') }}
                 </RouterLink>
             </div>
 
@@ -172,14 +173,14 @@ function setLanguage(value) {
                     to="/register"
                     class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                 >
-                    Register
+                    {{ getLocalWord('register') }}
                 </RouterLink>
                 |
                 <RouterLink
                     to="/login"
                     class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                 >
-                    Login
+                    {{ getLocalWord('login') }}
                 </RouterLink>
             </div>
             
@@ -188,7 +189,7 @@ function setLanguage(value) {
                 class="absolute top-2 right-1"
             >
                 <span class="mr-2">
-                    Welcome
+                    {{ getLocalWord('welcome') }}
                     <RouterLink
                         :to="{ name: 'Users', params: { id: currentUser.id }}"
                         class="text-green-700 hover:text-green-500 dark:text-cyan-300 dark:hover:text-cyan-200"
@@ -198,7 +199,7 @@ function setLanguage(value) {
                 </span>
 
                 <BaseButton @click="usersStore.logout">
-                    Logout
+                    {{ getLocalWord('logout') }}
                 </BaseButton>
             </div>
         </nav>

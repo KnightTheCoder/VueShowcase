@@ -1,5 +1,8 @@
 <script setup>
 import InformationArticle from '@/components/InformationArticle.vue'
+import { useLocalizationStore } from '@/stores/localization'
+
+const { getLocalWord } = useLocalizationStore()
 
 // Must import router to use it first
 // import { useRouter } from 'vue-router'
@@ -10,7 +13,7 @@ import InformationArticle from '@/components/InformationArticle.vue'
 <template>
     <div class="home">
         <h1 class="text-center my-8 text-4xl">
-            Vue Showcase
+            {{ getLocalWord('title') }}
             <p class="mt-4 underline text-lg">
                 by Kocsis Dominik Adrián
             </p>
@@ -20,8 +23,7 @@ import InformationArticle from '@/components/InformationArticle.vue'
             title="Purpose of Vue Showcase"
             image-source="/src/assets/images/vue_logo.png"
         >
-            The purpose of Vue Showcase is to showcase what you can accomplish using Vue and it's ecosystem
-            through examples and a fully working website
+            {{ getLocalWord('purpose') }}
         </InformationArticle>
 
         <h1 class="text-3xl text-center mt-14 mb-6">
