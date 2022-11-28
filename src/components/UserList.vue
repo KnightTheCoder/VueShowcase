@@ -1,13 +1,15 @@
 <script setup>
 import { useUsersStore } from '@/stores/users'
+import { useLocalizationStore } from '@/stores/localization'
 
 const usersStore = useUsersStore()
+const { getLocalWord } = useLocalizationStore()
 </script>
 
 <template>
     <div v-if="usersStore.users.length > 0">
         <h3 class="text-center mb-2 text-2xl">
-            Users
+            {{ getLocalWord('users') }}
         </h3>
 
         <ul class="list-none flex flex-col items-center">
@@ -28,6 +30,6 @@ const usersStore = useUsersStore()
         v-else
         class="text-center"
     >
-        No users found
+        {{ getLocalWord('no_users_found') }}
     </p>
 </template>

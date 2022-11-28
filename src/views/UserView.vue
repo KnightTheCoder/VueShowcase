@@ -9,9 +9,12 @@ import { useTitle } from '@/composables/title'
 import { useUser } from '@/composables/user'
 import { useNotification } from '@/composables/notification'
 import { useUsersStore } from '@/stores/users'
+import { useLocalizationStore } from '@/stores/localization'
 
 const route = useRoute()
 const title = useTitle('Vue Showcase')
+const { getLocalWord } = useLocalizationStore()
+
 const { notification, setNotification, closeNotification } = useNotification()
 const usersStore = useUsersStore()
 
@@ -95,7 +98,7 @@ function resetUser() {
         >
             <div class="text-center">
                 <h1 class="text-center text-3xl mb-6">
-                    Welcome {{ user.username }}!
+                    {{ getLocalWord('welcome') }} {{ user.username }}!
                 </h1>
                 <div class="my-4 p-4 text-lg">
                     <p>Id: {{ user.id }}</p>
@@ -156,7 +159,7 @@ function resetUser() {
             v-else-if="userDoesntExist"
             class="text-center"
         >
-            User doesn't exist
+            {{ getLocalWord('user_doesnt_exist') }}
         </p>
 
         <UserList v-else />

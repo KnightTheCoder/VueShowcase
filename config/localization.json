@@ -1,6 +1,7 @@
 {
     "en": {
         "title": "Vue Showcase",
+        "created_by": "created by",
         "dark": "Dark",
         "light": "Light",
         "system": "System",
@@ -12,10 +13,13 @@
         "logout": "Logout",
         "purpose": "The purpose of Vue Showcase is to showcase what you can accomplish using Vue and its ecosystem",
         "no_users_found": "No users found",
-        "user_doesnt_exist": "User doesn't exist"
+        "user_doesnt_exist": "User doesn't exist",
+        "page_not_found": "Page not found",
+        "cannot_find_path": "Cannot find path"
     },
     "hu": {
         "title": "Vue Showcase",
+        "created_by": "készítette",
         "dark": "Sötét",
         "light": "Világos",
         "system": "Rendszer",
@@ -27,10 +31,13 @@
         "logout": "Kijelentkezés",
         "purpose": "A Vue Showcase lényege az, hogy bemutassa mit lehet megvalósítani a vue és az ökoszisztémája segítségével",
         "no_users_found": "Egy felhasználó sem létezik",
-        "user_doesnt_exist": "Nem létezik a felhasználó"
+        "user_doesnt_exist": "Nem létezik a felhasználó",
+        "page_not_found": "Az oldal nem található",
+        "cannot_find_path": "Az útvonal nem található"
     },
     "es": {
         "title": "Vue Showcase",
+        "created_by": "created by",
         "dark": "Oscuro",
         "light": "Claro",
         "system": "Sisterna",
@@ -42,6 +49,8 @@
         "logout": "Logout",
         "purpose": "The purpose of Vue Showcase is to showcase what you can accomplish using Vue and its ecosystem",
         "no_users_found": "No se encontraron usuarios",
-        "user_doesnt_exist": "Usuario no existe"
+        "user_doesnt_exist": "Usuario no existe",
+        "page_not_found": "Page not found",
+        "cannot_find_path": "Cannot find path"
     }
 }

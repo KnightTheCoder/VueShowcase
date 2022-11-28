@@ -15,7 +15,7 @@ const { getLocalWord } = useLocalizationStore()
         <h1 class="text-center my-8 text-4xl">
             {{ getLocalWord('title') }}
             <p class="mt-4 underline text-lg">
-                by Kocsis Dominik Adrián
+                {{ getLocalWord('created_by') }} Kocsis Dominik Adrián
             </p>
         </h1>
 

@@ -6,8 +6,10 @@ import ToastNotification from '@/components/ToastNotification.vue'
 import { useUser } from '@/composables/user'
 import { useNotification } from '@/composables/notification'
 import { useUsersStore } from '@/stores/users'
+import { useLocalizationStore } from '@/stores/localization'
 import router from '@/router'
 
+const { getLocalWord } = useLocalizationStore()
 const { username, password, resetUser } = useUser()
 const { notification, setNotification, closeNotification } = useNotification()
 const usersStore = useUsersStore()
@@ -45,7 +47,7 @@ const login = () => {
 <template>
     <div class="register">
         <h1 class="text-center text-3xl mb-4">
-            Login
+            {{ getLocalWord('login') }}
         </h1>
 
         <form
@@ -66,7 +68,7 @@ const login = () => {
             </BaseInput>
 
             <BaseButton>
-                Login
+                {{ getLocalWord('login') }}
             </BaseButton>
 
             <UserList />
