@@ -7,9 +7,9 @@ export function useUser() {
     const confirmPassword = ref('')
 
     const isEmpty = computed(() => {
-        return username.value != ''
-            && password.value != ''
-            && email.value != ''
+        return username.value == ''
+            || password.value == ''
+            || email.value == ''
     })
 
     const doPasswordsMatch = computed(() => {
@@ -25,7 +25,7 @@ export function useUser() {
     })
     
     const isUserCorrect = computed(() => {
-        return isEmpty.value
+        return !isEmpty.value
             && isEmailFormatCorrect.value
             && isPasswordFormatCorrect.value
     })

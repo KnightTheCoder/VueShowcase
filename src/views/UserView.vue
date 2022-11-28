@@ -74,7 +74,7 @@ function saveChanges() {
     } else {
         setNotification(
             'Failed to save',
-            'Fields are incorrect',
+            'Incorrect information given',
             'danger'
         )
     }
@@ -111,42 +111,39 @@ function resetUser() {
                 </BaseButton>
             </div>
 
-            <div v-if="isBeingEdited">
-                <hr class="mx-auto my-4 border-gray-900 dark:border-gray-300">
-
-                <div
-                    class="m-4 mx-auto w-fit"
-                    @keydown.enter="saveChanges"
+            <div
+                v-if="isBeingEdited"
+                class="m-4 mx-auto w-fit"
+                @keydown.enter="saveChanges"
+            >
+                <BaseInput
+                    v-model="username"
+                    type="text"
                 >
-                    <BaseInput
-                        v-model="username"
-                        type="text"
-                    >
-                        Username
-                    </BaseInput>
-                    <BaseInput
-                        v-model="email"
-                        type="email"
-                    >
-                        Email
-                    </BaseInput>
-                    <BaseInput
-                        v-model="password"
-                        type="password"
-                    >
-                        Password
-                    </BaseInput>
-                
-                    <BaseButton @click="saveChanges">
-                        Save changes
-                    </BaseButton>
-                    <BaseButton
-                        class="ml-12 px-4"
-                        @click="resetUser"
-                    >
-                        Reset
-                    </BaseButton>
-                </div>
+                    Username
+                </BaseInput>
+                <BaseInput
+                    v-model="email"
+                    type="email"
+                >
+                    Email
+                </BaseInput>
+                <BaseInput
+                    v-model="password"
+                    type="password"
+                >
+                    Password
+                </BaseInput>
+            
+                <BaseButton @click="saveChanges">
+                    Save changes
+                </BaseButton>
+                <BaseButton
+                    class="ml-9 px-4"
+                    @click="resetUser"
+                >
+                    Reset
+                </BaseButton>
             </div>
 
             <ToastNotification

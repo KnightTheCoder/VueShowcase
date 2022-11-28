@@ -7,7 +7,7 @@ import { useNotification } from '@/composables/notification'
 import { useUsersStore } from '@/stores/users'
 import router from '@/router'
 
-const { isUserCorrect, doPasswordsMatch, username, password, email, confirmPassword, resetUser } = useUser()
+const { isUserCorrect, doPasswordsMatch, username, password, email, confirmPassword, resetUser, isEmpty } = useUser()
 const { notification, setNotification, closeNotification } = useNotification()
 const usersStore = useUsersStore()
 
@@ -31,7 +31,7 @@ const register = () => {
             })
         }, 300)
 
-    } else if (doPasswordsMatch) {
+    } else if (isEmpty.value) {
         setNotification(
             'Failed to register',
             'Fields are empty',
@@ -40,7 +40,7 @@ const register = () => {
     } else {
         setNotification(
             'Failed to register',
-            'Passwords don\'t match',
+            'Incorrect information given',
             'danger'
         )
     }

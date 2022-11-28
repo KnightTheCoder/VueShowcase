@@ -69,8 +69,6 @@ const login = () => {
                 Login
             </BaseButton>
 
-            <hr>
-
             <UserList />
 
             <ToastNotification

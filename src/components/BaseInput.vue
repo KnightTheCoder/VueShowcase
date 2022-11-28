@@ -40,7 +40,7 @@ const value = computed({
         <input
             v-bind="$attrs"
             v-model="value"
-            class="inline-block p-2 m-2 rounded-md bg-gray-300 focus:bg-gray-100 dark:bg-gray-700 dark:focus:bg-gray-600 border border-sky-500 dark:border-sky-300 focus:border-sky-400 dark:focus:border-sky-400 outline-none"
+            class="inline-block p-2 m-2 rounded-md w-60 bg-gray-300 focus:bg-gray-100 dark:bg-gray-700 dark:focus:bg-gray-600 border border-sky-500 dark:border-sky-300 focus:border-sky-400 dark:focus:border-sky-400 outline-none"
         >
     </div>
 </template>

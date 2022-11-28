@@ -1,6 +1,7 @@
 <script setup>
+import DropDownMenu from './components/DropDownMenu.vue'
 import BaseButton from '@/components/BaseButton.vue'
-import { ref, computed, watch, reactive, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, reactive, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useTitle } from '@/composables/title'
 import { useLocalStorage } from '@/composables/localStorage'
@@ -44,20 +45,11 @@ watch(
     }
 )
 
-const isOpen = ref(false)
-
-function setOpen(value) {
-    if (value == 'toggle') {
-        isOpen.value = !isOpen.value
-    } else {   
-        isOpen.value = value
-    }
-}
-
 const darkModeStorage = useLocalStorage('dark-mode')
 const isDark = useDarkMode(darkModeStorage.get())
 
 function setDark(value) {
+    console.log(value)
     isDark.value = value
     if (value == 'system') {
         darkModeStorage.set(null)
@@ -76,20 +68,8 @@ const colorImage = reactive({
     current: ''
 })
 
-function handleEscape(e) {
-    if (e.key == 'Esc' || e.key == 'Escape') {
-        isOpen.value = false
-    }
-}
-
-onMounted(() => {   
-    document.addEventListener('keydown', handleEscape)
-
+onMounted(() => {
     setImages()
-})
-
-onUnmounted(() => {
-    document.removeEventListener('keydown', handleEscape)
 })
 
 function createSource(mode, color) {
@@ -116,66 +96,28 @@ function setImages() {
     colorImage.current = createSource(mode, color)
 }
 
+const darkBtnImage = computed(() => {
+    return colorImage.current
+})
 
+const darkInformation = computed(() => {
+    return [
+        { text: 'Dark', image: colorImage.dark, parameter: 'dark' },
+        { text: 'Light', image: colorImage.light, parameter : 'light' },
+        { text: 'System', image: colorImage.system, parameter: 'system' },
+    ]
+})
 </script>
 
 <template>
     <div class="app">
         <nav>
             <div class="flex items-center p-2 bg-gray-300 dark:bg-slate-700">
-                <button
-                    class="relative z-10 w-10 h-10 m-1 mr-4 p-1 rounded-full border border-slate-900 bg-gray-300 dark:bg-gray-500 focus:border-2 hover:bg-gray-300 dark:hover:bg-slate-400 focus:border-sky-400 focus:bg-gray-300 dark:focus:bg-slate-400"
-                    @click="setOpen('toggle')"
-                >
-                    <img
-                        :src="colorImage.current"
-                    >
-                </button>
-
-                <button
-                    v-if="isOpen"
-                    class="fixed inset-0 h-full w-full cursor-default"
-                    tabindex="-1"
-                    @click="setOpen(false)"
+                <DropDownMenu
+                    :button-image="darkBtnImage"
+                    :information="darkInformation"
+                    @click="setDark"
                 />
-
-                <div
-                    v-if="isOpen"
-                    class="absolute top-12 m-2 shadow-lg shadow-gray-700 dark:shadow-gray-800"
-                >
-                    <a
-                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800 active:bg-gray-300 dark:active:bg-slate-400"
-                        @click="setDark('dark')"
-                    >
-                        <img
-                            class="h-8 w-8 overflow-hidden inline-block"
-                            :src="colorImage.dark"
-                        >
-                        Dark
-                    </a>
-
-                    <a
-                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800 active:bg-gray-300 dark:active:bg-slate-400"
-                        @click="setDark('light')"
-                    >
-                        <img
-                            class="h-8 w-8 overflow-hidden inline-block"
-                            :src="colorImage.light"
-                        >
-                        Light
-                    </a>
-
-                    <a
-                        class="block px-4 py-2 bg-gray-200 dark:bg-slate-600 hover:bg-gray-100 dark:hover:bg-slate-500 cursor-pointer select-none rounded-md border border-gray-400 dark:border-gray-800 active:bg-gray-300 dark:active:bg-slate-400"
-                        @click="setDark('system')"
-                    >
-                        <img
-                            class="h-8 w-8 overflow-hidden inline-block"
-                            :src="colorImage.system"
-                        >
-                        System
-                    </a>
-                </div>
                 
                 <RouterLink
                     to="/"
