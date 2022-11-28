@@ -58,13 +58,13 @@ const login = () => {
                 v-model="username"
                 type="text"
             >
-                Username
+                {{ getLocalWord('username') }}
             </BaseInput>
             <BaseInput
                 v-model="password"
                 type="password"
             >
-                Password
+                {{ getLocalWord('password') }}
             </BaseInput>
 
             <BaseButton>

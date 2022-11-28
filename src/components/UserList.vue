@@ -18,10 +18,10 @@ const { getLocalWord } = useLocalizationStore()
                 :key="user.id"
                 class="list-none w-fit p-6 mb-5 bg-slate-300 border text-center text-black dark:text-slate-300 border-slate-900 dark:border-cyan-200 rounded-2xl dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600"
             >
-                <p>Id: {{ user.id }}</p>
-                <p>Username: {{ user.username }}</p>
-                <p>Email: {{ user.email }}</p>
-                <p>Password: {{ user.password }}</p>
+                <p>{{ getLocalWord('id') }}: {{ user.id }}</p>
+                <p>{{ getLocalWord('username') }}: {{ user.username }}</p>
+                <p>{{ getLocalWord('email') }}: {{ user.email }}</p>
+                <p>{{ getLocalWord('password') }}: {{ user.password }}</p>
             </li>
         </ul>
     </div>

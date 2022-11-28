@@ -20,7 +20,7 @@ const { getLocalWord } = useLocalizationStore()
         </h1>
 
         <InformationArticle
-            title="Purpose of Vue Showcase"
+            :title="getLocalWord('header_title')"
             image-source="/src/assets/images/vue_logo.png"
         >
             {{ getLocalWord('purpose') }}

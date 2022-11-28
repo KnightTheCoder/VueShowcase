@@ -108,7 +108,8 @@ const languageInformation = computed(() => {
     return [
         { text: 'EN', image: null, parameter: 'en' },
         { text: 'HU', image: null, parameter: 'hu' },
-        { text: 'ES', image: null, parameter: 'es' },
+        { text: 'DE', image: null, parameter: 'de' },
+        { text: 'ES', image: null, parameter: 'es' }
     ]
 })
 

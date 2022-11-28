@@ -64,7 +64,7 @@ const register = () => {
                 :required="true"
                 type="text"
             >
-                Username
+                {{ getLocalWord('username') }}
             </BaseInput>
 
             <BaseInput
@@ -72,7 +72,7 @@ const register = () => {
                 :required="true"
                 type="email"
             >
-                Email
+                {{ getLocalWord('email') }}
             </BaseInput>
 
             <BaseInput
@@ -80,7 +80,7 @@ const register = () => {
                 :required="true"
                 type="password"
             >
-                Password
+                {{ getLocalWord('password') }}
             </BaseInput>
 
             <BaseInput
@@ -88,7 +88,7 @@ const register = () => {
                 :required="true"
                 type="password"
             >
-                Confirm password
+                {{ getLocalWord('confirm_password') }}
             </BaseInput>
 
             <BaseButton>

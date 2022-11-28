@@ -98,7 +98,7 @@ function resetUser() {
         >
             <div class="text-center">
                 <h1 class="text-center text-3xl mb-6">
-                    {{ getLocalWord('welcome') }} {{ user.username }}!
+                    {{ getLocalWord('welcome') }} {{ user.username }}
                 </h1>
                 <div class="my-4 p-4 text-lg">
                     <p>Id: {{ user.id }}</p>
@@ -110,7 +110,7 @@ function resetUser() {
                     class="px-6"
                     @click="toggleEdit"
                 >
-                    Edit
+                    {{ getLocalWord('edit') }}
                 </BaseButton>
             </div>
 
@@ -123,29 +123,29 @@ function resetUser() {
                     v-model="username"
                     type="text"
                 >
-                    Username
+                    {{ getLocalWord('username') }}
                 </BaseInput>
                 <BaseInput
                     v-model="email"
                     type="email"
                 >
-                    Email
+                    {{ getLocalWord('email') }}
                 </BaseInput>
                 <BaseInput
                     v-model="password"
                     type="password"
                 >
-                    Password
+                    {{ getLocalWord('password') }}
                 </BaseInput>
             
                 <BaseButton @click="saveChanges">
-                    Save changes
+                    {{ getLocalWord('save_changes') }}
                 </BaseButton>
                 <BaseButton
                     class="ml-9 px-4"
                     @click="resetUser"
                 >
-                    Reset
+                    {{ getLocalWord('reset') }}
                 </BaseButton>
             </div>
 
