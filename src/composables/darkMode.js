@@ -13,7 +13,7 @@ export function useDarkMode(value) {
     )
 
     function onChange(value) {
-        if(value == 'system' || value == 'null') {
+        if(value == 'system' || value == null) {
             isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
         } else if (isDark.value == 'dark') {
             document.documentElement.classList.add('dark')
