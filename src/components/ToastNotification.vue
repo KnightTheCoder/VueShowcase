@@ -1,7 +1,5 @@
 <script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
+/* const props =  */defineProps({
     notification: {
         type: Object,
         required: true
@@ -9,46 +7,19 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['close'])
-
-const notificationColor = computed(() => {
-    let textColor = '#f1f1f1'
-    let backgroundColor = '#0077f0'
-    let hoverColor = '#0000ff'
-
-    switch (props.notification.type) {
-        case 'success':
-            textColor = '#101010'
-            backgroundColor = '#00f000'
-            hoverColor = '#00ff00'
-            break
-
-        case 'warning':
-            textColor = '#a30000'
-            backgroundColor = '#f0f000'
-            hoverColor = '#ffff00'
-            break
-
-        case 'danger':
-            textColor = '#f1f1f1'
-            backgroundColor = '#f00000'
-            hoverColor = '#ff0000'
-            break
-    }
-    return {
-        textColor,
-        backgroundColor,
-        hoverColor
-    }
-})
 </script>
 
 <template>
     <Teleport to="body">
         <div
             v-if="notification.open"
-            class="modal"
+            class="z-50 fixed top-1/4 w-screen"
         >
-            <div @click="emit('close')">
+            <div
+                class="mx-auto p-8 h-fit w-fit rounded-md shadow-lg shadow-black hover:cursor-pointer bg-gray-300 hover:bg-gray-400 dark:bg-slate-600 dark:hover:bg-slate-500 text-sky-700 dark:text-sky-400"
+                :class="{ 'info': notification.type == 'info', 'success': notification.type == 'success', 'warning': notification.type == 'warning', 'danger': notification.type == 'danger' }"
+                @click="emit('close')"
+            >
                 <h3>
                     {{ notification.title }}
                 </h3>
@@ -61,26 +32,19 @@ const notificationColor = computed(() => {
 </template>
 
 <style scoped>
-.modal {
-    z-index: 999;
-    position: fixed;
-    top: 14%;
-    left: 50%;
-    margin-left: -15vw;
+.info {
+    @apply text-sky-700 dark:text-sky-500;
 }
 
-
-.modal div {
-    padding: 20px;
-    width: 30vw;
-    background-color: v-bind('notificationColor.backgroundColor');
-    color: v-bind('notificationColor.textColor');
-    border-radius: 10px;
-    box-shadow: 4px 6px 5px 4px #303030;
+.success {
+    @apply text-green-700 dark:text-green-500;
 }
 
-.modal > div:hover {
-    cursor: pointer;
-    background-color: v-bind('notificationColor.hoverColor');
+.warning {
+    @apply text-orange-700 dark:text-orange-400;
+}
+
+.danger {
+    @apply text-red-700 dark:text-red-500;
 }
 </style>

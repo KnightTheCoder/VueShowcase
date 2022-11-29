@@ -37,6 +37,7 @@ onMounted(() => {
 
 function onClicked(value) {
     emit('click', value)
+    isOpen.value = false
 }
 </script>
 
