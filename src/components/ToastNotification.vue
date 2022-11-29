@@ -1,5 +1,5 @@
 <script setup>
-/* const props =  */defineProps({
+defineProps({
     notification: {
         type: Object,
         required: true
@@ -13,10 +13,10 @@ const emit = defineEmits(['close'])
     <Teleport to="body">
         <div
             v-if="notification.open"
-            class="z-50 fixed top-1/4 w-screen"
+            class="z-50 fixed bottom-4 w-screen"
         >
             <div
-                class="mx-auto p-8 h-fit w-fit rounded-md shadow-lg shadow-black hover:cursor-pointer bg-gray-300 hover:bg-gray-400 dark:bg-slate-600 dark:hover:bg-slate-500 text-sky-700 dark:text-sky-400"
+                class="mx-auto p-8 h-fit w-fit rounded-md shadow-lg shadow-black hover:cursor-pointer bg-gray-300 hover:bg-gray-200 dark:bg-slate-600 dark:hover:bg-slate-500 text-sky-700 dark:text-sky-400"
                 :class="{ 'info': notification.type == 'info', 'success': notification.type == 'success', 'warning': notification.type == 'warning', 'danger': notification.type == 'danger' }"
                 @click="emit('close')"
             >
