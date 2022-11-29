@@ -20,6 +20,9 @@ export const useLocalizationStore = defineStore('localization', () => {
     )
 
     function getLocalWord(name) {
+        if (localization[currentLanguage.value] == null) {
+            currentLanguage.value = 'en'
+        }
         return localization[currentLanguage.value][name]
     }
 

@@ -34,7 +34,12 @@
         "success_register_desc": "User has successfully been registered",
         "failed_register": "Failed to register",
         "failed_register_empty": "The fields are empty",
-        "failed_register_desc": "Incorrect information given"
+        "failed_register_desc": "Incorrect information given",
+        "success_save": "Successfully saved",
+        "success_save_desc": "Changes have been saved",
+        "failed_save": "Failed to save",
+        "failed_save_empty": "The fields are empty",
+        "failed_save_desc": "Incorrect information given"
     },
     "hu": {
         "title": "Vue Showcase",
@@ -71,7 +76,12 @@
         "success_register_desc": "A felhasználó sikeresen regisztrálva lett",
         "failed_register": "Sikertelen regisztráció",
         "failed_register_empty": "Üresek a mezők",
-        "failed_register_desc": "A megadott információ helytelen"
+        "failed_register_desc": "A megadott információ helytelen",
+        "success_save": "Sikeres mentés",
+        "success_save_desc": "A változtatások el lettek mentve",
+        "failed_save": "Sikertelen mentés",
+        "failed_save_empty": "Üreset a mezők",
+        "failed_save_desc": "A megadott információ helytelen"
     },
     "de": {
         "title": "Vue Showcase",
@@ -108,7 +118,12 @@
         "success_register_desc": "Benutzer wurde erfolgreich registriert",
         "failed_register": "Registrierung fehlschlagen",
         "failed_register_empty": "Die Felder sind leer",
-        "failed_register_desc": "Falsche Angaben gemacht"
+        "failed_register_desc": "Falsche Angaben gemacht",
+        "success_save": "Erfolgreich gespeichert",
+        "success_save_desc": "Die Änderungen wurden gespeichert",
+        "failed_save": "Speichern fehlgeschlagen",
+        "failed_save_empty": "Die Felder sind leer",
+        "failed_save_desc": "Falsche Angaben gemacht"
     },
     "es": {
         "title": "Vue Showcase",
@@ -145,6 +160,11 @@
         "success_register_desc": "El usuario se ha registrado correctamente",
         "failed_register": "Fallo el registro",
         "failed_register_empty": "Los campos están vacíos",
-        "failed_register_desc": "Información incorrecta dada"
+        "failed_register_desc": "Información incorrecta dada",
+        "success_save": "Successfully saved",
+        "success_save_desc": "Changes have been saved",
+        "failed_save": "Failed to save",
+        "failed_save_empty": "Fields are empty",
+        "failed_save_desc": "Incorrect information given"
     }
 }

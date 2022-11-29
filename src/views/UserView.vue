@@ -64,20 +64,20 @@ function saveChanges() {
         user.value.password = password.value
 
         setNotification(
-            'Successfully saved',
-            'Changes have been saved',
+            getLocalWord('success_save'),
+            getLocalWord('success_save_desc'),
             'success'
         )
     } else if(isEmpty.value) {
         setNotification(
-            'Failed to save',
-            'Fields are empty',
+            getLocalWord('failed_save'),
+            getLocalWord('failed_save_empty'),
             'danger'
         )
     } else {
         setNotification(
-            'Failed to save',
-            'Incorrect information given',
+            getLocalWord('failed_save'),
+            getLocalWord('failed_save_desc'),
             'danger'
         )
     }
