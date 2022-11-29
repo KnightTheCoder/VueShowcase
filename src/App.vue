@@ -159,7 +159,7 @@ function setLanguage(value) {
                 </RouterLink>
                 |
                 <RouterLink
-                    to="/erorr"
+                    to="/error"
                     class="hover:text-slate-500 dark:hover:text-cyan-300 active:text-slate-700 dark:active:text-cyan-500"
                 >
                     {{ getLocalWord('error') }}

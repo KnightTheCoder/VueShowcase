@@ -101,10 +101,10 @@ function resetUser() {
                     {{ getLocalWord('welcome') }} {{ user.username }}
                 </h1>
                 <div class="my-4 p-4 text-lg">
-                    <p>Id: {{ user.id }}</p>
-                    <p>Username: {{ user.username }}</p>
-                    <p>Email: {{ user.email }}</p>
-                    <p>Password: {{ user.password }}</p>
+                    <p>{{ getLocalWord('id') }}: {{ user.id }}</p>
+                    <p>{{ getLocalWord('username') }}: {{ user.username }}</p>
+                    <p>{{ getLocalWord('email') }}: {{ user.email }}</p>
+                    <p>{{ getLocalWord('password') }}: {{ user.password }}</p>
                 </div>
                 <BaseButton
                     class="px-6"
