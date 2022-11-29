@@ -25,7 +25,16 @@
         "no_users_found": "No users found",
         "user_doesnt_exist": "User doesn't exist",
         "page_not_found": "Page not found",
-        "cannot_find_path": "Cannot find the following path"
+        "cannot_find_path": "Cannot find the following path",
+        "success_login": "Successful login",
+        "success_login_desc": "You successfully logged in",
+        "failed_login": "Failed to login",
+        "failed_login_desc": "Incorrect username or password",
+        "success_register": "User registered",
+        "success_register_desc": "User has successfully been registered",
+        "failed_register": "Failed to register",
+        "failed_register_empty": "The fields are empty",
+        "failed_register_desc": "Incorrect information given"
     },
     "hu": {
         "title": "Vue Showcase",
@@ -53,7 +62,16 @@
         "no_users_found": "Egy felhasználó sem létezik",
         "user_doesnt_exist": "Ez a felhasználó nem létezik",
         "page_not_found": "Az oldal nem található",
-        "cannot_find_path": "Az alábbi útvonal nem található"
+        "cannot_find_path": "Az alábbi útvonal nem található",
+        "success_login": "Sikeres bejelentkezés",
+        "success_login_desc": "Sikeresen bejelentkezett",
+        "failed_login": "Sikertelen bejelentkezés",
+        "failed_login_desc": "Nem megfelelő felhasználónév vagy jelszó",
+        "success_register": "A felhasználó regisztrálva",
+        "success_register_desc": "A felhasználó sikeresen regisztrálva lett",
+        "failed_register": "Sikertelen regisztráció",
+        "failed_register_empty": "Üresek a mezők",
+        "failed_register_desc": "A megadott információ helytelen"
     },
     "de": {
         "title": "Vue Showcase",
@@ -81,7 +99,16 @@
         "no_users_found": "Keine Benutzer gefunden",
         "user_doesnt_exist": "Benutzer existiert nicht",
         "page_not_found": "Seite nicht gefunden",
-        "cannot_find_path": "Kann den folgenden Pfad nicht finden"
+        "cannot_find_path": "Kann den folgenden Pfad nicht finden",
+        "success_login": "Erfolgreicher Login",
+        "success_login_desc": "Sie haben sich erfolgreich angemeldet",
+        "failed_login": "Login fehlgeschlagen",
+        "failed_login_desc": "Benutzername oder Passwort falsch",
+        "success_register": "Benutzer registriert",
+        "success_register_desc": "Benutzer wurde erfolgreich registriert",
+        "failed_register": "Registrierung fehlschlagen",
+        "failed_register_empty": "Die Felder sind leer",
+        "failed_register_desc": "Falsche Angaben gemacht"
     },
     "es": {
         "title": "Vue Showcase",
@@ -109,6 +136,15 @@
         "no_users_found": "No se encontraron usuarios",
         "user_doesnt_exist": "Usuario no existe",
         "page_not_found": "Página no encontrada",
-        "cannot_find_path": "No se puede encontrar la ruta"
+        "cannot_find_path": "No se puede encontrar la ruta",
+        "success_login": "Acceso exitoso",
+        "success_login_desc": "Has iniciado sesión correctamente",
+        "failed_login": "Error al iniciar sesión",
+        "failed_login_desc": "Nombre de usuario o contraseña incorrecta",
+        "success_register": "Usuario registrada",
+        "success_register_desc": "El usuario se ha registrado correctamente",
+        "failed_register": "Fallo el registro",
+        "failed_register_empty": "Los campos están vacíos",
+        "failed_register_desc": "Información incorrecta dada"
     }
 }

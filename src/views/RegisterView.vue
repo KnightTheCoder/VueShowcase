@@ -23,8 +23,8 @@ const register = () => {
         resetUser()
 
         setNotification(
-            'User registered',
-            'User has successfully been registered',
+            getLocalWord('success_register'),
+            getLocalWord('success_register_desc'),
             'success'
         )
         setTimeout(() => {
@@ -35,14 +35,14 @@ const register = () => {
 
     } else if (isEmpty.value) {
         setNotification(
-            'Failed to register',
-            'Fields are empty',
+            getLocalWord('failed_register'),
+            getLocalWord('failed_register_empty'),
             'danger'
         )
     } else {
         setNotification(
-            'Failed to register',
-            'Incorrect information given',
+            getLocalWord('failed_register'),
+            getLocalWord('failed_register_desc'),
             'danger'
         )
     }

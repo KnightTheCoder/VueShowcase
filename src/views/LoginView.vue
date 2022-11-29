@@ -23,8 +23,8 @@ const login = () => {
     if (userId > -1) {
         resetUser()
         setNotification(
-            'Successfull login',
-            'You successfully logged in',
+            getLocalWord('success_login'),
+            getLocalWord('success_login_desc'),
             'success'
         )
 
@@ -36,8 +36,8 @@ const login = () => {
         }, 300)
     } else {
         setNotification(
-            'Failed to log in',
-            'Incorrect username or password',
+            getLocalWord('failed_login'),
+            getLocalWord('failed_login_desc'),
             'danger'
         )
     }
