@@ -104,14 +104,14 @@ const darkInformation = computed(() => {
     ]
 })
 
-const languageInformation = computed(() => {
+function languageInformation() {
     return [
         { text: 'EN', image: null, parameter: 'en' },
         { text: 'HU', image: null, parameter: 'hu' },
         { text: 'DE', image: null, parameter: 'de' },
         { text: 'ES', image: null, parameter: 'es' }
     ]
-})
+}
 
 const selectedLanguage = computed(() => {
     return currentLanguage.value.toUpperCase()

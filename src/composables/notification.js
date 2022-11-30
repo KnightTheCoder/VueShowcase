@@ -19,17 +19,9 @@ export function useNotification() {
         notification.open = false
     }
 
-    function resetNotification() {
-        setNotification(
-            'Title',
-            'Description'
-        )
-    }
-
     return {
         notification,
         setNotification,
-        closeNotification,
-        resetNotification
+        closeNotification
     }
 }
